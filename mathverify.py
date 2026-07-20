@@ -17,31 +17,69 @@ No credentials and no network. Depends only on sympy and matplotlib. The transcr
 MIT License. Steps Ventures, 2026.  https://github.com/steps-re/reading-the-archive
 """
 import re
+import signal
 import sympy as sp
 
 LOC = {"pi": sp.pi, "sin": sp.sin, "cos": sp.cos, "tan": sp.tan, "e": sp.E,
        "log": sp.log, "sqrt": sp.sqrt, "a": sp.Symbol("a", positive=True)}
 
+# Period typography that is faithful transcription but breaks matplotlib mathtext.
+# Normalized ONLY for the render probe; the transcription itself is never altered.
+_PERIOD_LATEX = [
+    (re.compile(r"\\&c\.?"), r"\\ldots"),   # Euler's "&c." (et cetera)
+    (re.compile(r"(?<!\\)&c\.?"), r"\\ldots"),
+]
+
+
+def _normalize_for_render(latex):
+    for pat, rep in _PERIOD_LATEX:
+        latex = pat.sub(rep, latex)
+    return latex
+
+
+class _Timeout(Exception):
+    pass
+
+
+def _guarded(fn, seconds=5, default=None):
+    """Run fn() with a wall-clock guard (POSIX main thread; degrades to a plain try elsewhere).
+    sympy.simplify can hang on adversarial expressions; a verifier must not."""
+    def _alarm(sig, frm): raise _Timeout()
+    try:
+        old = signal.signal(signal.SIGALRM, _alarm); signal.alarm(seconds)
+    except ValueError:                      # not in the main thread
+        try: return fn()
+        except Exception: return default
+    try:
+        return fn()
+    except (_Timeout, Exception):
+        return default
+    finally:
+        signal.alarm(0); signal.signal(signal.SIGALRM, old)
+
 
 def render(latex):
-    """True if the LaTeX renders (matplotlib mathtext). A reading that will not render is wrong."""
+    """True if the LaTeX renders (matplotlib mathtext). A reading that will not render is wrong.
+    Known period idioms (e.g. Euler's '&c.') are normalized first so faithful transcription
+    of 18th-century typography is not misreported as a failure."""
     import matplotlib; matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     try:
-        fig = plt.figure(figsize=(4, 1)); fig.text(0.01, 0.5, f"${latex.strip().strip('$')}$", fontsize=16)
+        fig = plt.figure(figsize=(4, 1))
+        fig.text(0.01, 0.5, f"${_normalize_for_render(latex.strip().strip('$'))}$", fontsize=16)
         fig.canvas.draw(); plt.close(fig); return True
     except Exception:
         plt.close("all"); return False
 
 
 def sympy_true(eq):
-    """True/False/None for an equality string 'lhs = rhs' (None = could not parse)."""
+    """True/False/None for an equality string 'lhs = rhs' (None = could not parse/decide).
+    Guarded: simplify is given a few seconds, then we fall back to undecided."""
     if "=" not in eq: return None
     L, R = eq.split("=", 1)
-    try:
+    def _check():
         return sp.simplify(sp.sympify(L, locals=LOC) - sp.sympify(R, locals=LOC)) == 0
-    except Exception:
-        return None
+    return _guarded(_check, seconds=5, default=None)
 
 
 def numeric_true(eq, points=(0.317, 0.733, 1.171, 0.529), tol=1e-7):
@@ -106,8 +144,24 @@ def triage(eq):
     return "anomaly", "unverified as a universal identity (may be context-dependent)"
 
 
+def verify(eq):
+    """The one-call cascade. Returns (verdict, note).
+
+    Order matters: symbolic proof first (the strongest verdict), then the triage
+    explanations for everything symbolic proof cannot settle. Verdicts:
+      verified-identity | approximation | numerically-verified | definition |
+      18c-convention | differential-relation | anomaly | unparsed
+    """
+    if "=" not in eq:
+        return "unparsed", "no equality to check"
+    if sympy_true(eq) is True:
+        return "verified-identity", "symbolically proven"
+    return triage(eq)
+
+
 if __name__ == "__main__":
     demo = ["cos(pi) = -1", "cos(pi) = 1", "sqrt(10) = 3.162277", "alpha = 1/2",
-            "1/0**3 = 1/0", "(i-1)/(2*i) = 1/2"]
+            "1/0**3 = 1/0", "(i-1)/(2*i) = 1/2", "sin(5*z) = 16*sin(z)*sin(pi/5-z)*sin(pi/5+z)*sin(2*pi/5-z)*sin(2*pi/5+z)"]
     for eq in demo:
-        c, n = triage(eq); print(f"{eq:24} -> {c:22} {n}")
+        c, n = verify(eq); print(f"{eq[:44]:44} -> {c:20} {n}")
+    print("\nrender('A+Bz+Cz^2+\\\\&c.') =", render(r"A+Bz+Cz^2+\&c."), " (period '&c.' idiom, normalized)")
