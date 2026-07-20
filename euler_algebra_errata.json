@@ -1,293 +1,262 @@
 {
  "source": "Euler, Elements of Algebra, English ed. 1828 (Internet Archive elementsofalgebr00eule)",
- "leaves": 627,
- "expressions_checked": 14812,
- "flagged": 97,
+ "leaves_transcribed": 627,
+ "leaves_truncated_even_at_16k": 26,
+ "expressions_checked": 20184,
+ "equalities_flagged_by_symbolic_check": 455,
  "triage_counts": {
-  "18c-convention": 7,
-  "anomaly": 44,
+  "18c-convention": 10,
+  "anomaly": 50,
   "numerically-verified": 9,
-  "approximation": 21,
-  "series-expansion": 5,
-  "definition": 11
+  "approximation": 70,
+  "context-equation": 199,
+  "series-expansion": 7,
+  "definition": 110
  },
+ "how_to_read_this": "The symbolic checker flags every equality it cannot prove is a universal identity. In a teaching text most of those are not errors: 'context-equation' are equations being solved or definitions (they hold under local hypotheses the checker cannot see); 'approximation' are decimals verified against the printed digits; 'definition'/'18c-convention'/'series-expansion'/'numerically-verified' are likewise fine. Only 'anomaly' is a genuine pure-numeric mismatch worth a human's eyes.",
  "headline_finding": {
-  "what": "Euler's imaginary-number multiplication error",
-  "where": "Chapter XIII, Of Impossible or Imaginary Quantities (approx. leaf 80)",
-  "detail": "Euler writes sqrt(-a)*sqrt(-b) = sqrt(ab), e.g. sqrt(-2)*sqrt(-3) = sqrt(6) and sqrt(-1)*sqrt(-4) = 2. Correct value: sqrt(-2)*sqrt(-3) = -sqrt(6). A famous error Euler himself made.",
+  "what": "Euler's imaginary-number multiplication error (a real author error)",
+  "where": "Chapter XIII, Of Impossible or Imaginary Quantities",
+  "detail": "Euler applies sqrt(a)*sqrt(b)=sqrt(ab) to imaginary roots, e.g. sqrt(-2)*sqrt(-3)=sqrt(6) and sqrt(-1)*sqrt(-4)=2. The correct values are negative: sqrt(-2)*sqrt(-3)=-sqrt(6). This is a famous mistake Euler himself made; the numeric checker flags it with no prompting.",
   "instances": [
-   "sqrt(-2) * sqrt(-3) = sqrt(6)",
-   "sqrt(-1) * sqrt(-4) = sqrt(4)",
+   "1 / sqrt(-1) = sqrt(-1)",
    "sqrt(-1) * sqrt(-4) = 2",
-   "x - y*sqrt(-c) = m*(p - q*sqrt(-c))**2"
+   "sqrt(-1) * sqrt(-4) = sqrt(4)",
+   "sqrt(-2) * sqrt(-3) = sqrt(6)",
+   "sqrt(3) / sqrt(-3) = sqrt(-1)"
   ]
  },
- "anomalies": [
-  {
-   "leaf": 65,
-   "relation": "7/12 = 56/72",
-   "category": "anomaly",
-   "note": "lhs 0.583333 != rhs 0.777778"
-  },
-  {
-   "leaf": 69,
-   "relation": "(20/100)/(18/100) = 3",
-   "category": "anomaly",
-   "note": "lhs 1.11111 != rhs 3"
-  },
-  {
-   "leaf": 80,
-   "relation": "sqrt(-2) * sqrt(-3) = sqrt(6)",
-   "category": "anomaly",
-   "note": "lhs -2.44949 != rhs 2.44949"
-  },
-  {
-   "leaf": 80,
-   "relation": "sqrt(-1) * sqrt(-4) = sqrt(4)",
-   "category": "anomaly",
-   "note": "lhs -2 != rhs 2"
-  },
-  {
-   "leaf": 80,
-   "relation": "sqrt(-1) * sqrt(-4) = 2",
-   "category": "anomaly",
-   "note": "lhs -2 != rhs 2"
-  },
-  {
-   "leaf": 115,
-   "relation": "(4*a**2 - 3*b + 2*c) + (3*a**2 + 2*b - 12*c) = 7*a**2 - b + 10*c",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
-  },
-  {
-   "leaf": 115,
-   "relation": "(a**4 + 2*a*b + b**2) + (-a**4 - 2*a**3*b + 3*b**3) = -2*a**3*b + 2*a*b + 4*b**3",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
-  },
-  {
-   "leaf": 121,
-   "relation": "(a**2-2*a*b)/a = a-2",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
-  },
-  {
-   "leaf": 219,
-   "relation": "25237465 / 211893 = 119",
-   "category": "anomaly",
-   "note": "lhs 119.105 != rhs 119"
-  },
-  {
-   "leaf": 238,
-   "relation": "ab - ac = a*(b-c)",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
-  },
-  {
-   "leaf": 238,
-   "relation": "bc - ab = b*(c-a)",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
-  },
-  {
-   "leaf": 247,
-   "relation": "9*3 + 15*9 - 186 = 25 - 5*8 + 4*9",
-   "category": "anomaly",
-   "note": "lhs -24 != rhs 21"
-  },
-  {
-   "leaf": 265,
-   "relation": "sqrt(156025/4 + 79200) = 485/2",
-   "category": "anomaly",
-   "note": "lhs 343.811 != rhs 242.5"
-  },
-  {
-   "leaf": 335,
-   "relation": "(10.2615)**4 - 3*(10.2615)**2 - 75*(10.2615) = 10000",
-   "category": "anomaly",
-   "note": "lhs 10002.2 != rhs 10000"
-  },
-  {
-   "leaf": 335,
-   "relation": "120*(34.6532)**3 + 3657*(34.6532)**2 - 38059*(34.6532) = 8007115",
-   "category": "anomaly",
-   "note": "lhs 8.06619e+06 != rhs 8.00712e+06"
-  },
-  {
-   "leaf": 334,
-   "relation": "x - 1 = 1",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
-  },
-  {
-   "leaf": 334,
-   "relation": "x**3 + x**2 + x = 100",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
-  },
-  {
-   "leaf": 362,
-   "relation": "a + b*x + f**2*x**2 = f**2*x**2 + 2*m*f*x/n + m**2/n**2",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
-  },
-  {
-   "leaf": 362,
-   "relation": "a + b*x = 2*m*f*x/n + m**2/n**2",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
-  },
-  {
-   "leaf": 362,
-   "relation": "n**2*a + n**2*b*x = 2*m*n*f*x + m**2",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
-  },
-  {
-   "leaf": 366,
-   "relation": "(3*5**2 - 2*6**2) / (3*6**2 - 2*5**2) = 3/38",
-   "category": "anomaly",
-   "note": "lhs 0.0517241 != rhs 0.0789474"
-  },
-  {
-   "leaf": 418,
-   "relation": "3*p = 1",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
-  },
-  {
-   "leaf": 423,
-   "relation": "6+2*y = 25/4",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
-  },
-  {
-   "leaf": 423,
-   "relation": "7 + (36/7)**2 = 279841/20736",
-   "category": "anomaly",
-   "note": "lhs 33.449 != rhs 13.4954"
-  },
-  {
-   "leaf": 426,
-   "relation": "49*p**2 + 49*q**2 = 49*(p**2 + q)",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
-  },
-  {
-   "leaf": 433,
-   "relation": "x - y*sqrt(-c) = m*(p - q*sqrt(-c))**2",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
-  },
-  {
-   "leaf": 433,
-   "relation": "x**2 + c*y**2 = m**2*(p**2 + c*q**2)**2",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
-  },
-  {
-   "leaf": 442,
-   "relation": "38 = 2**5 - 10*2**3*1**2 + 5*2*1**4",
-   "category": "anomaly",
-   "note": "lhs 38 != rhs -38"
-  },
-  {
-   "leaf": 465,
-   "relation": "p**2 + 3600*m**2 = r**2",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
-  },
-  {
-   "leaf": 465,
-   "relation": "p**2 + 10800*m**2 = s**2",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
-  },
-  {
-   "leaf": 465,
-   "relation": "7200*m**2 = s**2 - r**2",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
-  },
-  {
-   "leaf": 491,
-   "relation": "x**3 = y**3 - 3*a*y**2 + 3*a**2*y - a**3",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
-  },
-  {
-   "leaf": 504,
-   "relation": "1/(a-alpha) = b",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
-  },
-  {
-   "leaf": 504,
-   "relation": "a - alpha = 1/b",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
-  },
-  {
-   "leaf": 513,
-   "relation": "D/C = delta + B/C",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
-  },
-  {
-   "leaf": 549,
-   "relation": "r**0 = A*(p**0 - a*q**0) * (p**0 - b*q**0)",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
-  },
-  {
-   "leaf": 596,
-   "relation": "v**2 - A*xi**2 = M",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
-  },
-  {
-   "leaf": 596,
-   "relation": "cy**2 - 2*n*y*z + B*z**2 = 1",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
-  },
-  {
-   "leaf": 596,
-   "relation": "c*p**2 - 2*n*p*q + B*q**2 = 1",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
-  },
-  {
-   "leaf": 596,
-   "relation": "p*s - q*r = 1",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
-  },
-  {
-   "leaf": 613,
-   "relation": "33**2 - 13 = 1010",
-   "category": "anomaly",
-   "note": "lhs 1076 != rhs 1010"
-  },
-  {
-   "leaf": 613,
-   "relation": "33/10 = 3",
-   "category": "anomaly",
-   "note": "lhs 3.3 != rhs 3"
-  },
-  {
-   "leaf": 614,
-   "relation": "-33/10 = -3",
-   "category": "anomaly",
-   "note": "lhs -3.3 != rhs -3"
-  },
-  {
-   "leaf": 614,
-   "relation": "(9-97)/10 = -7",
-   "category": "anomaly",
-   "note": "lhs -8.8 != rhs -7"
-  }
- ],
+ "other_pure_numeric_anomalies": {
+  "count": 45,
+  "note": "These are pure-numeric mismatches with no free variables. They are candidates for human review, NOT confirmed Euler errors: the majority are single-digit machine-transcription slips the checker catches (e.g. '33**2 - 13 = 1010', where 33**2-13 = 1076), and a few are checker parse-limits (multi-argument lcm). This is the checker doing QA on its own reading.",
+  "items": [
+   {
+    "leaf": 65,
+    "relation": "7/12 = 56/72",
+    "note": "lhs 0.583333 != rhs 0.777778"
+   },
+   {
+    "leaf": 69,
+    "relation": "(20/100)/(18/100) = 3",
+    "note": "lhs 1.11111 != rhs 3"
+   },
+   {
+    "leaf": 74,
+    "relation": "(1 + 1/2)**2 = 289/144",
+    "note": "lhs 2.25 != rhs 2.00694"
+   },
+   {
+    "leaf": 112,
+    "relation": "log(1.1497, 10) = 0.0602060",
+    "note": "exact 0.0605845314 vs printed 0.0602060"
+   },
+   {
+    "leaf": 112,
+    "relation": "2**(1/5) = 1.1497",
+    "note": "exact 1.14870 vs printed 1.1497"
+   },
+   {
+    "leaf": 129,
+    "relation": "1+2/3+4/9+8/27 = 67/27",
+    "note": "lhs 2.40741 != rhs 2.48148"
+   },
+   {
+    "leaf": 155,
+    "relation": "(6*5*4*3*2*1)/(3*2*1*2*1) = 5",
+    "note": "lhs 60 != rhs 5"
+   },
+   {
+    "leaf": 217,
+    "relation": "64 * log10(53/50) = 1.6195776",
+    "note": "exact 1.61957538 vs printed 1.6195776"
+   },
+   {
+    "leaf": 217,
+    "relation": "500 * log10(21/20) = 10.594649534969000",
+    "note": "exact 10.594649534969036 vs printed 10.594649534969000"
+   },
+   {
+    "leaf": 218,
+    "relation": "25 * log(21/20, 10) = 0.5297324750",
+    "note": "exact 0.529732476748 vs printed 0.5297324750"
+   },
+   {
+    "leaf": 218,
+    "relation": "log(1000 + 20*100, 10) = 3.4771213135",
+    "note": "exact 3.47712125472 vs printed 3.4771213135"
+   },
+   {
+    "leaf": 219,
+    "relation": "25237465 / 211893 = 119",
+    "note": "lhs 119.105 != rhs 119"
+   },
+   {
+    "leaf": 222,
+    "relation": "400 * (1 + 0.06)**3.5 = 490 + 11/20 + 7.5/240",
+    "note": "lhs 490.49 != rhs 490.581"
+   },
+   {
+    "leaf": 222,
+    "relation": "550.5 * (1 + 0.06)**3.5 = 675 + 6/20 + 5/240",
+    "note": "lhs 675.037 != rhs 675.321"
+   },
+   {
+    "leaf": 222,
+    "relation": "100 * (1 + 0.0737)**9.75 = 200",
+    "note": "lhs 200.036 != rhs 200"
+   },
+   {
+    "leaf": 228,
+    "relation": "5 - 1/3 = 9/2",
+    "note": "lhs 4.66667 != rhs 4.5"
+   },
+   {
+    "leaf": 229,
+    "relation": "1 + 1/4 = 15/14",
+    "note": "lhs 1.25 != rhs 1.07143"
+   },
+   {
+    "leaf": 241,
+    "relation": "(1/2 + 1/3 + 1/4) * 120 = 94",
+    "note": "lhs 130 != rhs 94"
+   },
+   {
+    "leaf": 247,
+    "relation": "9*3 + 15*9 - 186 = 25 - 5*8 + 4*9",
+    "note": "lhs -24 != rhs 21"
+   },
+   {
+    "leaf": 265,
+    "relation": "sqrt(156025/4 + 79200) = 485/2",
+    "note": "lhs 343.811 != rhs 242.5"
+   },
+   {
+    "leaf": 314,
+    "relation": "1/625 - 4/125 - 6/25 + 4/5 + 1 = 31/625",
+    "note": "lhs 1.5296 != rhs 0.0496"
+   },
+   {
+    "leaf": 324,
+    "relation": "(4+sqrt(15))/2 * 2 = (8+2*sqrt(15))/4",
+    "note": "lhs 7.87298 != rhs 3.93649"
+   },
+   {
+    "leaf": 325,
+    "relation": "1 + (-sqrt(5) - sqrt(3) - sqrt(5) + sqrt(3)) / 2 = 1 + sqrt(5)",
+    "note": "lhs -1.23607 != rhs 3.23607"
+   },
+   {
+    "leaf": 335,
+    "relation": "(10.2615)**4 - 3*(10.2615)**2 - 75*(10.2615) = 10000",
+    "note": "lhs 10002.2 != rhs 10000"
+   },
+   {
+    "leaf": 335,
+    "relation": "120*(34.6532)**3 + 3657*(34.6532)**2 - 38059*(34.6532) = 8007115",
+    "note": "lhs 8.06619e+06 != rhs 8.00712e+06"
+   },
+   {
+    "leaf": 358,
+    "relation": "lcm(1, 2, 3, 4, 5, 6, 7, 8, 9) = 2520",
+    "note": "lhs 2 != rhs 2520"
+   },
+   {
+    "leaf": 366,
+    "relation": "(3*5**2 - 2*6**2) / (3*6**2 - 2*5**2) = 3/38",
+    "note": "lhs 0.0517241 != rhs 0.0789474"
+   },
+   {
+    "leaf": 415,
+    "relation": "32 + 8*(-71/28) = 338/49 - (64/7)*(-71/28)",
+    "note": "lhs 11.7143 != rhs 30.0816"
+   },
+   {
+    "leaf": 419,
+    "relation": "-(147*(147**2 - 21*37**2))/37**3 = -1049580/50653",
+    "note": "lhs 20.721 != rhs -20.721"
+   },
+   {
+    "leaf": 419,
+    "relation": "-(27*(27**2 - 9*10**2))/1000 = -4617/1000",
+    "note": "lhs 4.617 != rhs -4.617"
+   },
+   {
+    "leaf": 420,
+    "relation": "3+(4/3)*(-54/17) = 21/17",
+    "note": "lhs -1.23529 != rhs 1.23529"
+   },
+   {
+    "leaf": 423,
+    "relation": "7 + (36/7)**2 = 279841/20736",
+    "note": "lhs 33.449 != rhs 13.4954"
+   },
+   {
+    "leaf": 442,
+    "relation": "38 = 2**5 - 10*2**3*1**2 + 5*2*1**4",
+    "note": "lhs 38 != rhs -38"
+   },
+   {
+    "leaf": 455,
+    "relation": "13/5 = (2*2*1 + 5*(1**2 - 2**2)) / (2**2 + 1**2)",
+    "note": "lhs 2.6 != rhs -2.2"
+   },
+   {
+    "leaf": 455,
+    "relation": "(13/5)**2 - (23/5)**2 = -408/25",
+    "note": "lhs -14.4 != rhs -16.32"
+   },
+   {
+    "leaf": 480,
+    "relation": "(1 - 2*(5/4)**2) / (2*(5/4)) = 17/20",
+    "note": "lhs -0.85 != rhs 0.85"
+   },
+   {
+    "leaf": 496,
+    "relation": "30**3 = 22**3 + 58**3 - 54**3",
+    "note": "lhs 27000 != rhs 48296"
+   },
+   {
+    "leaf": 498,
+    "relation": "18 * (-135/16 / 9) = -135/16",
+    "note": "lhs -16.875 != rhs -8.4375"
+   },
+   {
+    "leaf": 499,
+    "relation": "576**2 + 1080**2 = 1500624",
+    "note": "lhs 1.49818e+06 != rhs 1.50062e+06"
+   },
+   {
+    "leaf": 611,
+    "relation": "18**2 - 13*5**2 = 1",
+    "note": "lhs -1 != rhs 1"
+   },
+   {
+    "leaf": 611,
+    "relation": "-35/12 = -3",
+    "note": "lhs -2.91667 != rhs -3"
+   },
+   {
+    "leaf": 613,
+    "relation": "33**2 - 13 = 1010",
+    "note": "lhs 1076 != rhs 1010"
+   },
+   {
+    "leaf": 613,
+    "relation": "33/10 = 3",
+    "note": "lhs 3.3 != rhs 3"
+   },
+   {
+    "leaf": 614,
+    "relation": "-33/10 = -3",
+    "note": "lhs -3.3 != rhs -3"
+   },
+   {
+    "leaf": 614,
+    "relation": "(9-97)/10 = -7",
+    "note": "lhs -8.8 != rhs -7"
+   }
+  ]
+ },
  "all_flags": [
   {
    "leaf": 60,
@@ -460,20 +429,20 @@
   {
    "leaf": 115,
    "relation": "(4*a**2 - 3*b + 2*c) + (3*a**2 + 2*b - 12*c) = 7*a**2 - b + 10*c",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
   },
   {
    "leaf": 115,
    "relation": "(a**4 + 2*a*b + b**2) + (-a**4 - 2*a**3*b + 3*b**3) = -2*a**3*b + 2*a*b + 4*b**3",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
   },
   {
    "leaf": 121,
    "relation": "(a**2-2*a*b)/a = a-2",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
   },
   {
    "leaf": 134,
@@ -574,14 +543,14 @@
   {
    "leaf": 238,
    "relation": "ab - ac = a*(b-c)",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
   },
   {
    "leaf": 238,
    "relation": "bc - ab = b*(c-a)",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
   },
   {
    "leaf": 247,
@@ -640,8 +609,8 @@
   {
    "leaf": 334,
    "relation": "x - 1 = 1",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
   },
   {
    "leaf": 334,
@@ -652,26 +621,26 @@
   {
    "leaf": 334,
    "relation": "x**3 + x**2 + x = 100",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
   },
   {
    "leaf": 362,
    "relation": "a + b*x + f**2*x**2 = f**2*x**2 + 2*m*f*x/n + m**2/n**2",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
   },
   {
    "leaf": 362,
    "relation": "a + b*x = 2*m*f*x/n + m**2/n**2",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
   },
   {
    "leaf": 362,
    "relation": "n**2*a + n**2*b*x = 2*m*n*f*x + m**2",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
   },
   {
    "leaf": 366,
@@ -688,8 +657,8 @@
   {
    "leaf": 418,
    "relation": "3*p = 1",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
   },
   {
    "leaf": 418,
@@ -700,8 +669,8 @@
   {
    "leaf": 423,
    "relation": "6+2*y = 25/4",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
   },
   {
    "leaf": 423,
@@ -724,20 +693,20 @@
   {
    "leaf": 426,
    "relation": "49*p**2 + 49*q**2 = 49*(p**2 + q)",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
   },
   {
    "leaf": 433,
    "relation": "x - y*sqrt(-c) = m*(p - q*sqrt(-c))**2",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
   },
   {
    "leaf": 433,
    "relation": "x**2 + c*y**2 = m**2*(p**2 + c*q**2)**2",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
   },
   {
    "leaf": 442,
@@ -748,38 +717,38 @@
   {
    "leaf": 465,
    "relation": "p**2 + 3600*m**2 = r**2",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
   },
   {
    "leaf": 465,
    "relation": "p**2 + 10800*m**2 = s**2",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
   },
   {
    "leaf": 465,
    "relation": "7200*m**2 = s**2 - r**2",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
   },
   {
    "leaf": 491,
    "relation": "x**3 = y**3 - 3*a*y**2 + 3*a**2*y - a**3",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
   },
   {
    "leaf": 504,
    "relation": "1/(a-alpha) = b",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
   },
   {
    "leaf": 504,
    "relation": "a - alpha = 1/b",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
   },
   {
    "leaf": 504,
@@ -796,14 +765,14 @@
   {
    "leaf": 513,
    "relation": "D/C = delta + B/C",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
   },
   {
    "leaf": 549,
    "relation": "r**0 = A*(p**0 - a*q**0) * (p**0 - b*q**0)",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
   },
   {
    "leaf": 596,
@@ -814,26 +783,26 @@
   {
    "leaf": 596,
    "relation": "v**2 - A*xi**2 = M",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
   },
   {
    "leaf": 596,
    "relation": "cy**2 - 2*n*y*z + B*z**2 = 1",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
   },
   {
    "leaf": 596,
    "relation": "c*p**2 - 2*n*p*q + B*q**2 = 1",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
   },
   {
    "leaf": 596,
    "relation": "p*s - q*r = 1",
-   "category": "anomaly",
-   "note": "unverified as a universal identity (may be context-dependent)"
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
   },
   {
    "leaf": 596,
@@ -870,6 +839,2154 @@
    "relation": "(9-97)/10 = -7",
    "category": "anomaly",
    "note": "lhs -8.8 != rhs -7"
+  },
+  {
+   "leaf": 74,
+   "relation": "(1 + 1/2)**2 = 289/144",
+   "category": "anomaly",
+   "note": "lhs 2.25 != rhs 2.00694"
+  },
+  {
+   "leaf": 83,
+   "relation": "(-27)**(1/3) = -3",
+   "category": "18c-convention",
+   "note": "real-vs-complex root branch"
+  },
+  {
+   "leaf": 83,
+   "relation": "(-125)**(1/3) = -5",
+   "category": "18c-convention",
+   "note": "real-vs-complex root branch"
+  },
+  {
+   "leaf": 81,
+   "relation": "sqrt(3) / sqrt(-3) = sqrt(-1)",
+   "category": "anomaly",
+   "note": "lhs 0-1i != rhs 0+1i"
+  },
+  {
+   "leaf": 81,
+   "relation": "1 / sqrt(-1) = sqrt(-1)",
+   "category": "anomaly",
+   "note": "lhs 0-1i != rhs 0+1i"
+  },
+  {
+   "leaf": 112,
+   "relation": "log(343, 10) = 2.5352941",
+   "category": "approximation",
+   "note": "exact 2.53529412 vs printed 2.5352941"
+  },
+  {
+   "leaf": 112,
+   "relation": "log(2401, 10) = 3.3803922",
+   "category": "approximation",
+   "note": "exact 3.38039216 vs printed 3.3803922"
+  },
+  {
+   "leaf": 112,
+   "relation": "2.5352941 + 3.3803922 = 5.9156863",
+   "category": "approximation",
+   "note": "exact 5.91568630 vs printed 5.9156863"
+  },
+  {
+   "leaf": 112,
+   "relation": "log(823540, 10) = 5.9156847",
+   "category": "approximation",
+   "note": "exact 5.91568470 vs printed 5.9156847"
+  },
+  {
+   "leaf": 112,
+   "relation": "log(3.16228, 10) = 0.5000000",
+   "category": "approximation",
+   "note": "exact 0.500000321 vs printed 0.5000000"
+  },
+  {
+   "leaf": 112,
+   "relation": "3.16228**2 = 10",
+   "category": "approximation",
+   "note": "approximately equal (10 vs 10)"
+  },
+  {
+   "leaf": 112,
+   "relation": "log(2, 10) = 0.3010300",
+   "category": "approximation",
+   "note": "exact 0.301029996 vs printed 0.3010300"
+  },
+  {
+   "leaf": 112,
+   "relation": "log(1.1497, 10) = 0.0602060",
+   "category": "anomaly",
+   "note": "exact 0.0605845314 vs printed 0.0602060"
+  },
+  {
+   "leaf": 112,
+   "relation": "2**(1/5) = 1.1497",
+   "category": "anomaly",
+   "note": "exact 1.14870 vs printed 1.1497"
+  },
+  {
+   "leaf": 119,
+   "relation": "(a**2+2*a*b+2*b**2)*(a**2-2*a*b+2*b**2) = a**4+b**4",
+   "category": "series-expansion",
+   "note": "holds as a truncated series (matches at a small argument)"
+  },
+  {
+   "leaf": 129,
+   "relation": "1+2/3+4/9+8/27 = 67/27",
+   "category": "anomaly",
+   "note": "lhs 2.40741 != rhs 2.48148"
+  },
+  {
+   "leaf": 155,
+   "relation": "(6*5*4*3*2*1)/(3*2*1*2*1) = 5",
+   "category": "anomaly",
+   "note": "lhs 60 != rhs 5"
+  },
+  {
+   "leaf": 180,
+   "relation": "n = 7",
+   "category": "definition",
+   "note": "n defined"
+  },
+  {
+   "leaf": 180,
+   "relation": "n = 100",
+   "category": "definition",
+   "note": "n defined"
+  },
+  {
+   "leaf": 194,
+   "relation": "105 / 100 = (449 + 2/3) / (428 + 16/21)",
+   "category": "approximation",
+   "note": "approximately equal (1.05 vs 1.04876)"
+  },
+  {
+   "leaf": 196,
+   "relation": "4*26*533/21 = 2639 + 11/21",
+   "category": "approximation",
+   "note": "approximately equal (2639.62 vs 2639.52)"
+  },
+  {
+   "leaf": 206,
+   "relation": "a/(1 - b/c) = ac/(c-b)",
+   "category": "series-expansion",
+   "note": "holds as a truncated series (matches at a small argument)"
+  },
+  {
+   "leaf": 206,
+   "relation": "(1 + b/c)*s = a",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 206,
+   "relation": "a/(1 + b/c) = ac/(c+b)",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 215,
+   "relation": "1215.506 + 60.775 = 1276.281",
+   "category": "approximation",
+   "note": "exact 1276.3 vs printed 1276.281"
+  },
+  {
+   "leaf": 217,
+   "relation": "a = 3452",
+   "category": "definition",
+   "note": "a defined"
+  },
+  {
+   "leaf": 217,
+   "relation": "n = 64",
+   "category": "definition",
+   "note": "n defined"
+  },
+  {
+   "leaf": 217,
+   "relation": "log10(53) = 1.7242759",
+   "category": "approximation",
+   "note": "exact 1.72427587 vs printed 1.7242759"
+  },
+  {
+   "leaf": 217,
+   "relation": "log10(50) = 1.6989700",
+   "category": "approximation",
+   "note": "exact 1.69897000 vs printed 1.6989700"
+  },
+  {
+   "leaf": 217,
+   "relation": "1.7242759 - 1.6989700 = 0.0253059",
+   "category": "approximation",
+   "note": "exact 0.0253059000 vs printed 0.0253059"
+  },
+  {
+   "leaf": 217,
+   "relation": "log10(53/50) = 0.0253059",
+   "category": "approximation",
+   "note": "exact 0.0253058653 vs printed 0.0253059"
+  },
+  {
+   "leaf": 217,
+   "relation": "64 * log10(53/50) = 1.6195776",
+   "category": "anomaly",
+   "note": "exact 1.61957538 vs printed 1.6195776"
+  },
+  {
+   "leaf": 217,
+   "relation": "log10(3452) = 3.5380708",
+   "category": "approximation",
+   "note": "exact 3.53807079 vs printed 3.5380708"
+  },
+  {
+   "leaf": 217,
+   "relation": "1.6195776 + 3.5380708 = 5.1576484",
+   "category": "approximation",
+   "note": "exact 5.15764840 vs printed 5.1576484"
+  },
+  {
+   "leaf": 217,
+   "relation": "10**5.1576484 = 143763",
+   "category": "approximation",
+   "note": "approximately equal (143763 vs 143763)"
+  },
+  {
+   "leaf": 217,
+   "relation": "a = 1",
+   "category": "definition",
+   "note": "a defined"
+  },
+  {
+   "leaf": 217,
+   "relation": "n = 500",
+   "category": "definition",
+   "note": "n defined"
+  },
+  {
+   "leaf": 217,
+   "relation": "log10(21) = 1.322219294733919",
+   "category": "approximation",
+   "note": "exact 1.3222192947339193 vs printed 1.322219294733919"
+  },
+  {
+   "leaf": 217,
+   "relation": "log10(20) = 1.301029995663981",
+   "category": "approximation",
+   "note": "exact 1.3010299956639812 vs printed 1.301029995663981"
+  },
+  {
+   "leaf": 217,
+   "relation": "1.322219294733919 - 1.301029995663981 = 0.021189299069938",
+   "category": "approximation",
+   "note": "exact 0.021189299069937995 vs printed 0.021189299069938"
+  },
+  {
+   "leaf": 217,
+   "relation": "log10(21/20) = 0.021189299069938",
+   "category": "approximation",
+   "note": "exact 0.021189299069938073 vs printed 0.021189299069938"
+  },
+  {
+   "leaf": 217,
+   "relation": "500 * 0.021189299069938 = 10.594649534969000",
+   "category": "approximation",
+   "note": "exact 10.594649534969001 vs printed 10.594649534969000"
+  },
+  {
+   "leaf": 217,
+   "relation": "500 * log10(21/20) = 10.594649534969000",
+   "category": "anomaly",
+   "note": "exact 10.594649534969036 vs printed 10.594649534969000"
+  },
+  {
+   "leaf": 217,
+   "relation": "10**10.594649534969000 = 39323200000",
+   "category": "approximation",
+   "note": "approximately equal (3.93233e+10 vs 3.93232e+10)"
+  },
+  {
+   "leaf": 220,
+   "relation": "log(6, 10) = 0.7781513",
+   "category": "approximation",
+   "note": "exact 0.778151250 vs printed 0.7781513"
+  },
+  {
+   "leaf": 220,
+   "relation": "log(21/20, 10) = 0.0211893",
+   "category": "approximation",
+   "note": "exact 0.0211892991 vs printed 0.0211893"
+  },
+  {
+   "leaf": 220,
+   "relation": "0.0211893 * 8/365 = 0.0004644",
+   "category": "approximation",
+   "note": "exact 0.000464423014 vs printed 0.0004644"
+  },
+  {
+   "leaf": 218,
+   "relation": "log(21/20, 10) = 0.021189299",
+   "category": "approximation",
+   "note": "exact 0.021189299070 vs printed 0.021189299"
+  },
+  {
+   "leaf": 218,
+   "relation": "25 * log(21/20, 10) = 0.5297324750",
+   "category": "anomaly",
+   "note": "exact 0.529732476748 vs printed 0.5297324750"
+  },
+  {
+   "leaf": 218,
+   "relation": "log(1000 + 20*100, 10) = 3.4771213135",
+   "category": "anomaly",
+   "note": "exact 3.47712125472 vs printed 3.4771213135"
+  },
+  {
+   "leaf": 218,
+   "relation": "10**4.0068537885 = 10159.1",
+   "category": "approximation",
+   "note": "exact 1.02e+4 vs printed 10159.1"
+  },
+  {
+   "leaf": 228,
+   "relation": "5 - 1/3 = 9/2",
+   "category": "anomaly",
+   "note": "lhs 4.66667 != rhs 4.5"
+  },
+  {
+   "leaf": 229,
+   "relation": "1 + 1/4 = 15/14",
+   "category": "anomaly",
+   "note": "lhs 1.25 != rhs 1.07143"
+  },
+  {
+   "leaf": 222,
+   "relation": "375.5 * (1 + 0.06)**9 = 634.4",
+   "category": "approximation",
+   "note": "exact 634. vs printed 634.4"
+  },
+  {
+   "leaf": 222,
+   "relation": "1 * 0.05 / 365 = 0.0001369863",
+   "category": "approximation",
+   "note": "exact 0.000136986301370 vs printed 0.0001369863"
+  },
+  {
+   "leaf": 222,
+   "relation": "256.5 * (1 + 0.06)**7 = 385 + 13/20 + 7.5/240",
+   "category": "approximation",
+   "note": "approximately equal (385.681 vs 385.681)"
+  },
+  {
+   "leaf": 222,
+   "relation": "563 * (1 + 0.06)**(7 + 99/365) = 860",
+   "category": "approximation",
+   "note": "approximately equal (860.029 vs 860)"
+  },
+  {
+   "leaf": 222,
+   "relation": "400 * (1 + 0.06)**3.5 = 490 + 11/20 + 7.5/240",
+   "category": "anomaly",
+   "note": "lhs 490.49 != rhs 490.581"
+  },
+  {
+   "leaf": 222,
+   "relation": "320.5 * (1 + 0.05)**4 = 389 + 11/20 + 4.5/240",
+   "category": "approximation",
+   "note": "approximately equal (389.57 vs 389.569)"
+  },
+  {
+   "leaf": 222,
+   "relation": "650 * (1 + 0.05)**5 = 829 + 11/20 + 7.5/240",
+   "category": "approximation",
+   "note": "approximately equal (829.583 vs 829.581)"
+  },
+  {
+   "leaf": 222,
+   "relation": "550.5 * (1 + 0.06)**3.5 = 675 + 6/20 + 5/240",
+   "category": "anomaly",
+   "note": "lhs 675.037 != rhs 675.321"
+  },
+  {
+   "leaf": 222,
+   "relation": "15.5 * (1 + 0.035)**9 = 21 + 2/20 + 4.5/240",
+   "category": "approximation",
+   "note": "approximately equal (21.1249 vs 21.1188)"
+  },
+  {
+   "leaf": 222,
+   "relation": "100 * (1 + 0.0737)**9.75 = 200",
+   "category": "anomaly",
+   "note": "lhs 200.036 != rhs 200"
+  },
+  {
+   "leaf": 222,
+   "relation": "(1 + 8.49824/100)**8.49824 = 2",
+   "category": "approximation",
+   "note": "approximately equal (2 vs 2)"
+  },
+  {
+   "leaf": 222,
+   "relation": "600 / (1 + 0.05 * 9/12) = 578 + 6/20 + 3.75/240",
+   "category": "approximation",
+   "note": "approximately equal (578.313 vs 578.316)"
+  },
+  {
+   "leaf": 222,
+   "relation": "(70 * (1 - (1+0.05)**(-21)) / 0.05) / (1+0.05)**6 = 669 + 14/20 + 0.25/240",
+   "category": "approximation",
+   "note": "approximately equal (669.714 vs 669.701)"
+  },
+  {
+   "leaf": 241,
+   "relation": "(1/2 + 1/3 + 1/4) * 120 = 94",
+   "category": "anomaly",
+   "note": "lhs 130 != rhs 94"
+  },
+  {
+   "leaf": 274,
+   "relation": "sqrt(1 + 4*sqrt(-3)) = 2 + sqrt(-3)",
+   "category": "approximation",
+   "note": "approximately equal (2+1.73205i vs 2+1.73205i)"
+  },
+  {
+   "leaf": 274,
+   "relation": "sqrt(-1/2 + 1/2*sqrt(-3)) = 1/2 + sqrt(-3)/2",
+   "category": "approximation",
+   "note": "approximately equal (0.5+0.866025i vs 0.5+0.866025i)"
+  },
+  {
+   "leaf": 274,
+   "relation": "y**2 = 2*a*y + d",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 274,
+   "relation": "y = a + sqrt(a**2 + d)",
+   "category": "definition",
+   "note": "y defined"
+  },
+  {
+   "leaf": 274,
+   "relation": "y = a - sqrt(a**2 + d)",
+   "category": "definition",
+   "note": "y defined"
+  },
+  {
+   "leaf": 304,
+   "relation": "y = 1",
+   "category": "definition",
+   "note": "y defined"
+  },
+  {
+   "leaf": 304,
+   "relation": "x = 3",
+   "category": "definition",
+   "note": "x defined"
+  },
+  {
+   "leaf": 310,
+   "relation": "x**4 - 1/2*x**3 + 1/3*x**2 - 3/4*x + 1/18 = 0",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 310,
+   "relation": "y**4/6**4 - 1/2*y**3/6**3 + 1/3*y**2/6**2 - 3/4*y/6 + 1/18 = 0",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 308,
+   "relation": "2*cos(20*pi/180) = 1.8793852",
+   "category": "approximation",
+   "note": "exact 1.87938524 vs printed 1.8793852"
+  },
+  {
+   "leaf": 308,
+   "relation": "-2*cos(40*pi/180) = -1.5320888",
+   "category": "approximation",
+   "note": "exact -1.53208889 vs printed -1.5320888"
+  },
+  {
+   "leaf": 308,
+   "relation": "-2*cos(80*pi/180) = -0.3472964",
+   "category": "approximation",
+   "note": "exact -0.347296355 vs printed -0.3472964"
+  },
+  {
+   "leaf": 308,
+   "relation": "-2*cos(20*pi/180) = -1.8793852",
+   "category": "approximation",
+   "note": "exact -1.87938524 vs printed -1.8793852"
+  },
+  {
+   "leaf": 308,
+   "relation": "2*cos(40*pi/180) = 1.5320888",
+   "category": "approximation",
+   "note": "exact 1.53208889 vs printed 1.5320888"
+  },
+  {
+   "leaf": 308,
+   "relation": "2*cos(80*pi/180) = 0.3472964",
+   "category": "approximation",
+   "note": "exact 0.347296355 vs printed 0.3472964"
+  },
+  {
+   "leaf": 314,
+   "relation": "sqrt(21) = 4.5825",
+   "category": "approximation",
+   "note": "exact 4.58258 vs printed 4.5825"
+  },
+  {
+   "leaf": 314,
+   "relation": "1/625 - 4/125 - 6/25 + 4/5 + 1 = 31/625",
+   "category": "anomaly",
+   "note": "lhs 1.5296 != rhs 0.0496"
+  },
+  {
+   "leaf": 316,
+   "relation": "1/4*a**2 + 2*p - q**2 = b",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 316,
+   "relation": "q**2 = 1/4*a**2 + 2*p - b",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 316,
+   "relation": "ap - 2*q*r = c",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 316,
+   "relation": "2*q*r = ap - c",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 316,
+   "relation": "p**2 - r**2 = d",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 316,
+   "relation": "r**2 = p**2 - d",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 316,
+   "relation": "4*q**2 = a**2 + 8*p - 4*b",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 316,
+   "relation": "4*q**2*r**2 = 8*p**3 + (a**2 - 4*b)*p**2 - 8*d*p - d*(a**2 - 4*b)",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 316,
+   "relation": "4*q**2*r**2 = a**2*p**2 - 2*a*c*p + c**2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 316,
+   "relation": "8*p**3 + (a**2 - 4*b)*p**2 - 8*d*p - d*(a**2 - 4*b) = a**2*p**2 - 2*a*c*p + c**2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 316,
+   "relation": "8*p**3 - 4*b*p**2 + (2*a*c - 8*d)*p - a**2*d + 4*b*d - c**2 = 0",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 316,
+   "relation": "(x**2 + (1/2)*a*x + p)**2 - (q*x + r)**2 = 0",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 316,
+   "relation": "(x**2 + (1/2)*a*x + p)**2 = (q*x + r)**2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 316,
+   "relation": "x**2 + (1/2)*a*x + p = q*x + r",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 316,
+   "relation": "x**2 + (1/2)*a*x + p = -q*x - r",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 316,
+   "relation": "x**2 = (q - (1/2)*a)*x - p + r",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 316,
+   "relation": "x**2 = -(q + (1/2)*a)*x - p - r",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 319,
+   "relation": "2*p + 9 - q**2 = 12",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 319,
+   "relation": "6*p + 2*q*r = 12",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 319,
+   "relation": "p**2 - r**2 = 4",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 319,
+   "relation": "q**2 = 2*p - 3",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 319,
+   "relation": "2*q*r = 12 - 6*p",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 319,
+   "relation": "q*r = 6 - 3*p",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 319,
+   "relation": "r**2 = p**2 - 4",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 319,
+   "relation": "q**2 * r**2 = 2*p**3 - 3*p**2 - 8*p + 12",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 319,
+   "relation": "q**2 * r**2 = 36 - 36*p + 9*p**2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 319,
+   "relation": "2*p**3 - 3*p**2 - 8*p + 12 = 9*p**2 - 36*p + 36",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 319,
+   "relation": "2*p**3 - 12*p**2 + 28*p - 24 = 0",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 319,
+   "relation": "p**3 - 6*p**2 + 14*p - 12 = 0",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 319,
+   "relation": "q**2 = 1",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 319,
+   "relation": "q = 1",
+   "category": "definition",
+   "note": "q defined"
+  },
+  {
+   "leaf": 319,
+   "relation": "q*r - r = 0",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 319,
+   "relation": "(x**2 - 3*x + 2)**2 = x**2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 319,
+   "relation": "x**2 = 4*x - 2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 319,
+   "relation": "x**2 = 2*x - 2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 320,
+   "relation": "z**3 - f*z**2 + g*z - h = 0",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 320,
+   "relation": "p + q + r = f",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 320,
+   "relation": "p*q + p*r + q*r = g",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 320,
+   "relation": "p*q*r = h",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 320,
+   "relation": "x = sqrt(p) + sqrt(q) + sqrt(r)",
+   "category": "definition",
+   "note": "x defined"
+  },
+  {
+   "leaf": 320,
+   "relation": "x**2 = p + q + r + 2*sqrt(p*q) + 2*sqrt(p*r) + 2*sqrt(q*r)",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 320,
+   "relation": "x**2 - f = 2*sqrt(p*q) + 2*sqrt(p*r) + 2*sqrt(q*r)",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 320,
+   "relation": "x**4 - 2*f*x**2 + f**2 = 4*p*q + 4*p*r + 4*q*r + 8*sqrt(p**2*q*r) + 8*sqrt(p*q**2*r) + 8*sqrt(p*q*r**2)",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 320,
+   "relation": "4*p*q + 4*p*r + 4*q*r = 4*g",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 320,
+   "relation": "x**4 - 2*f*x**2 + f**2 - 4*g = 8*sqrt(p*q*r) * (sqrt(p) + sqrt(q) + sqrt(r))",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 320,
+   "relation": "sqrt(p*q*r) = sqrt(h)",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 320,
+   "relation": "x**4 - 2*f*x**2 - 8*x*sqrt(h) + f**2 - 4*g = 0",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 320,
+   "relation": "x**4 - a*x**2 - b*x - c = 0",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 320,
+   "relation": "2*f = a",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 320,
+   "relation": "f = a/2",
+   "category": "definition",
+   "note": "f defined"
+  },
+  {
+   "leaf": 320,
+   "relation": "8*sqrt(h) = b",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 320,
+   "relation": "h = b**2/64",
+   "category": "definition",
+   "note": "h defined"
+  },
+  {
+   "leaf": 320,
+   "relation": "f**2 - 4*g = -c",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 320,
+   "relation": "a**2/4 - 4*g + c = 0",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 320,
+   "relation": "a**2/4 + c = 4*g",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 320,
+   "relation": "g = a**2/16 + c/4",
+   "category": "definition",
+   "note": "g defined"
+  },
+  {
+   "leaf": 325,
+   "relation": "1 + (-sqrt(5) - sqrt(3) - sqrt(5) + sqrt(3)) / 2 = 1 + sqrt(5)",
+   "category": "anomaly",
+   "note": "lhs -1.23607 != rhs 3.23607"
+  },
+  {
+   "leaf": 324,
+   "relation": "(4+sqrt(15))/2 * 2 = (8+2*sqrt(15))/4",
+   "category": "anomaly",
+   "note": "lhs 7.87298 != rhs 3.93649"
+  },
+  {
+   "leaf": 358,
+   "relation": "lcm(1, 2, 3, 4, 5, 6, 7, 8, 9) = 2520",
+   "category": "anomaly",
+   "note": "lhs 2 != rhs 2520"
+  },
+  {
+   "leaf": 386,
+   "relation": "a = 2",
+   "category": "definition",
+   "note": "a defined"
+  },
+  {
+   "leaf": 386,
+   "relation": "b = -1",
+   "category": "definition",
+   "note": "b defined"
+  },
+  {
+   "leaf": 386,
+   "relation": "c = 0",
+   "category": "definition",
+   "note": "c defined"
+  },
+  {
+   "leaf": 386,
+   "relation": "x = 1",
+   "category": "definition",
+   "note": "x defined"
+  },
+  {
+   "leaf": 386,
+   "relation": "f = 1",
+   "category": "definition",
+   "note": "f defined"
+  },
+  {
+   "leaf": 386,
+   "relation": "y = 1",
+   "category": "definition",
+   "note": "y defined"
+  },
+  {
+   "leaf": 386,
+   "relation": "g = 1",
+   "category": "definition",
+   "note": "g defined"
+  },
+  {
+   "leaf": 386,
+   "relation": "q = 2",
+   "category": "definition",
+   "note": "q defined"
+  },
+  {
+   "leaf": 386,
+   "relation": "p = 3",
+   "category": "definition",
+   "note": "p defined"
+  },
+  {
+   "leaf": 381,
+   "relation": "m**2 - a*n**2 = (a**2*p**4 + 2*a*p**2*q**2 + q**4 - 4*a*p**2*q**2) / (a**2*p**4 - 2*a*p**2*q**2 + q**4)",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 381,
+   "relation": "m**2 = a*n**2 + 1",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 381,
+   "relation": "af**2 + b = g**2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 381,
+   "relation": "ax**2 + b = y**2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 381,
+   "relation": "an**2 + 1 = m**2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 381,
+   "relation": "b = y**2 - a*x**2",
+   "category": "definition",
+   "note": "b defined"
+  },
+  {
+   "leaf": 381,
+   "relation": "b = g**2 - a*f**2",
+   "category": "definition",
+   "note": "b defined"
+  },
+  {
+   "leaf": 381,
+   "relation": "y**2 - a*x**2 = g**2 - a*f**2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 391,
+   "relation": "r = 1",
+   "category": "definition",
+   "note": "r defined"
+  },
+  {
+   "leaf": 391,
+   "relation": "q = 1",
+   "category": "definition",
+   "note": "q defined"
+  },
+  {
+   "leaf": 391,
+   "relation": "p = 2",
+   "category": "definition",
+   "note": "p defined"
+  },
+  {
+   "leaf": 391,
+   "relation": "n = 3",
+   "category": "definition",
+   "note": "n defined"
+  },
+  {
+   "leaf": 391,
+   "relation": "m = 8",
+   "category": "definition",
+   "note": "m defined"
+  },
+  {
+   "leaf": 391,
+   "relation": "p = 1",
+   "category": "definition",
+   "note": "p defined"
+  },
+  {
+   "leaf": 391,
+   "relation": "a = 8",
+   "category": "definition",
+   "note": "a defined"
+  },
+  {
+   "leaf": 410,
+   "relation": "3*k**2 - 2*e*h**4 = 3*a + e*h**4",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 410,
+   "relation": "3*a + e*h**4 = k**2 + 2*a",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 412,
+   "relation": "k**2 = 1",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 415,
+   "relation": "32 + 8*(-71/28) = 338/49 - (64/7)*(-71/28)",
+   "category": "anomaly",
+   "note": "lhs 11.7143 != rhs 30.0816"
+  },
+  {
+   "leaf": 420,
+   "relation": "3+(4/3)*(-54/17) = 21/17",
+   "category": "anomaly",
+   "note": "lhs -1.23529 != rhs 1.23529"
+  },
+  {
+   "leaf": 419,
+   "relation": "-(147*(147**2 - 21*37**2))/37**3 = -1049580/50653",
+   "category": "anomaly",
+   "note": "lhs 20.721 != rhs -20.721"
+  },
+  {
+   "leaf": 419,
+   "relation": "-(27*(27**2 - 9*10**2))/1000 = -4617/1000",
+   "category": "anomaly",
+   "note": "lhs 4.617 != rhs -4.617"
+  },
+  {
+   "leaf": 438,
+   "relation": "x**2 = 121",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 438,
+   "relation": "y**2 = 4",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 438,
+   "relation": "y = 2",
+   "category": "definition",
+   "note": "y defined"
+  },
+  {
+   "leaf": 438,
+   "relation": "y = -2",
+   "category": "definition",
+   "note": "y defined"
+  },
+  {
+   "leaf": 438,
+   "relation": "3*p**2*q - q**3 = 2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 438,
+   "relation": "3*p**2*q - q**3 = -2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 438,
+   "relation": "q*(3*p**2 - q**2) = 2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 438,
+   "relation": "q = 1",
+   "category": "definition",
+   "note": "q defined"
+  },
+  {
+   "leaf": 438,
+   "relation": "3*p**2 - 1 = 2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 438,
+   "relation": "p = 1",
+   "category": "definition",
+   "note": "p defined"
+  },
+  {
+   "leaf": 438,
+   "relation": "x = 2",
+   "category": "definition",
+   "note": "x defined"
+  },
+  {
+   "leaf": 438,
+   "relation": "x**2 = 4",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 438,
+   "relation": "q = 2",
+   "category": "definition",
+   "note": "q defined"
+  },
+  {
+   "leaf": 438,
+   "relation": "6*p**2 - 8 = 2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 438,
+   "relation": "6*p**2 - 8 = -2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 438,
+   "relation": "6*p**2 = 10",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 438,
+   "relation": "p**2 = 5/3",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 438,
+   "relation": "6*p**2 = 6",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 438,
+   "relation": "p = 1",
+   "category": "definition",
+   "note": "p defined"
+  },
+  {
+   "leaf": 438,
+   "relation": "x = 11",
+   "category": "definition",
+   "note": "x defined"
+  },
+  {
+   "leaf": 438,
+   "relation": "a = 1",
+   "category": "definition",
+   "note": "a defined"
+  },
+  {
+   "leaf": 438,
+   "relation": "c = 2",
+   "category": "definition",
+   "note": "c defined"
+  },
+  {
+   "leaf": 438,
+   "relation": "y = 1",
+   "category": "definition",
+   "note": "y defined"
+  },
+  {
+   "leaf": 438,
+   "relation": "y = -1",
+   "category": "definition",
+   "note": "y defined"
+  },
+  {
+   "leaf": 438,
+   "relation": "q*(3*p**2 - 2*q**2) = 1",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 438,
+   "relation": "q*(3*p**2 - 2*q**2) = -1",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 438,
+   "relation": "q = 1",
+   "category": "definition",
+   "note": "q defined"
+  },
+  {
+   "leaf": 438,
+   "relation": "3*p**2 - 2 = 1",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 438,
+   "relation": "3*p**2 - 2 = -1",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 447,
+   "relation": "x**2 = p**2 - q**2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 447,
+   "relation": "2*y**2 = 2*p*q",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 447,
+   "relation": "y**2 = p*q",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 447,
+   "relation": "p = r**2",
+   "category": "definition",
+   "note": "p defined"
+  },
+  {
+   "leaf": 447,
+   "relation": "q = s**2",
+   "category": "definition",
+   "note": "q defined"
+  },
+  {
+   "leaf": 447,
+   "relation": "x**2 = r**4 - s**4",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 447,
+   "relation": "x**2 = p**2 + q**2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 447,
+   "relation": "x**4 - 4*y**4 = (p**2 - q**2)**2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 447,
+   "relation": "x**2 = r**4 + s**4",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 447,
+   "relation": "y = 2*z",
+   "category": "definition",
+   "note": "y defined"
+  },
+  {
+   "leaf": 447,
+   "relation": "2*x**4 + 2*y**4 = 4*z**2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 447,
+   "relation": "x**4 + y**4 = 2*z**2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 447,
+   "relation": "2*z**2 + 2*x**2*y**2 = x**4 + 2*x**2*y**2 + y**4",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 447,
+   "relation": "2*z**2 - 2*x**2*y**2 = x**4 - 2*x**2*y**2 + y**4",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 447,
+   "relation": "x = p+q",
+   "category": "definition",
+   "note": "x defined"
+  },
+  {
+   "leaf": 447,
+   "relation": "y = p-q",
+   "category": "definition",
+   "note": "y defined"
+  },
+  {
+   "leaf": 447,
+   "relation": "x**2+y**2 = 2*p**2+2*q**2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 447,
+   "relation": "x**2-y**2 = 4*p*q",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 447,
+   "relation": "2*x**4 - 2*y**4 = 16*p*q*(p**2+q**2)",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 455,
+   "relation": "13/5 = (2*2*1 + 5*(1**2 - 2**2)) / (2**2 + 1**2)",
+   "category": "anomaly",
+   "note": "lhs 2.6 != rhs -2.2"
+  },
+  {
+   "leaf": 455,
+   "relation": "(13/5)**2 - (23/5)**2 = -408/25",
+   "category": "anomaly",
+   "note": "lhs -14.4 != rhs -16.32"
+  },
+  {
+   "leaf": 458,
+   "relation": "10*f = -24",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 458,
+   "relation": "f = -12/5",
+   "category": "definition",
+   "note": "f defined"
+  },
+  {
+   "leaf": 458,
+   "relation": "10*g + f**2 = -8",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 458,
+   "relation": "g = (-8-f**2)/10",
+   "category": "definition",
+   "note": "g defined"
+  },
+  {
+   "leaf": 458,
+   "relation": "(-8-f**2)/10 = -344/250",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 458,
+   "relation": "32 + 16*r = 2*f*g + g**2*r",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 458,
+   "relation": "r = (2*f*g - 32)/(16 - g**2)",
+   "category": "definition",
+   "note": "r defined"
+  },
+  {
+   "leaf": 458,
+   "relation": "(4-g)*(4+g) = (328/125)*(672/125)",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 458,
+   "relation": "r = -1550/861",
+   "category": "definition",
+   "note": "r defined"
+  },
+  {
+   "leaf": 458,
+   "relation": "p = -2239/1722",
+   "category": "definition",
+   "note": "p defined"
+  },
+  {
+   "leaf": 458,
+   "relation": "x = p**2 - 1",
+   "category": "definition",
+   "note": "x defined"
+  },
+  {
+   "leaf": 458,
+   "relation": "x+a = z**2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 458,
+   "relation": "x = z**2 - a",
+   "category": "definition",
+   "note": "x defined"
+  },
+  {
+   "leaf": 458,
+   "relation": "b-a = 1",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 458,
+   "relation": "c-a = -1",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 458,
+   "relation": "b = a+1",
+   "category": "definition",
+   "note": "b defined"
+  },
+  {
+   "leaf": 458,
+   "relation": "c = a-1",
+   "category": "definition",
+   "note": "c defined"
+  },
+  {
+   "leaf": 458,
+   "relation": "b-a = 2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 458,
+   "relation": "c-a = -2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 458,
+   "relation": "b = a+2",
+   "category": "definition",
+   "note": "b defined"
+  },
+  {
+   "leaf": 458,
+   "relation": "c = a-2",
+   "category": "definition",
+   "note": "c defined"
+  },
+  {
+   "leaf": 457,
+   "relation": "q = -1/2",
+   "category": "definition",
+   "note": "q defined"
+  },
+  {
+   "leaf": 457,
+   "relation": "q = -1/2 + r",
+   "category": "definition",
+   "note": "q defined"
+  },
+  {
+   "leaf": 457,
+   "relation": "p = 1/2 + r",
+   "category": "definition",
+   "note": "p defined"
+  },
+  {
+   "leaf": 457,
+   "relation": "p**2 = 1/4 + r + r**2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 457,
+   "relation": "p**4 = 1/16 + 1/2*r + 3/2*r**2 + 2*r**3 + r**4",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 457,
+   "relation": "p**4 - 2*p**2 + 2 = 25/16 - 3/2*r - 1/2*r**2 + 2*r**3 + r**4",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 457,
+   "relation": "25 - 24*r - 8*r**2 + 32*r**3 + 16*r**4 = 25 + 10*f*r + 40*r**2 + f**2*r**2 + 8*f*r**3 + 16*r**4",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 457,
+   "relation": "25 - 24*r - 8*r**2 + 32*r**3 + 16*r**4 = 25 + 10*f*r - 40*r**2 + f**2*r**2 - 8*f*r**3 + 16*r**4",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 457,
+   "relation": "10*f = -24",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 457,
+   "relation": "f = -12/5",
+   "category": "definition",
+   "note": "f defined"
+  },
+  {
+   "leaf": 457,
+   "relation": "-8 + 32*r = 40 + f**2 + 8*f*r",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 457,
+   "relation": "r = (48+f**2)/(32-8*f)",
+   "category": "definition",
+   "note": "r defined"
+  },
+  {
+   "leaf": 457,
+   "relation": "r = 21/20",
+   "category": "definition",
+   "note": "r defined"
+  },
+  {
+   "leaf": 457,
+   "relation": "p = 31/20",
+   "category": "definition",
+   "note": "p defined"
+  },
+  {
+   "leaf": 457,
+   "relation": "x = 561/400",
+   "category": "definition",
+   "note": "x defined"
+  },
+  {
+   "leaf": 457,
+   "relation": "x+1 = (31/20)**2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 457,
+   "relation": "x**2+1 = (689/400)**2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 457,
+   "relation": "-8 + 32*r = -40 + f**2 - 8*f*r",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 457,
+   "relation": "r = (f**2-32)/(32+8*f)",
+   "category": "definition",
+   "note": "r defined"
+  },
+  {
+   "leaf": 457,
+   "relation": "r = -41/40",
+   "category": "definition",
+   "note": "r defined"
+  },
+  {
+   "leaf": 457,
+   "relation": "p = 31/40",
+   "category": "definition",
+   "note": "p defined"
+  },
+  {
+   "leaf": 457,
+   "relation": "16*r**4 + 32*r**3 - 8*r**2 - 24*r + 25 = 16*r**4 + 32*r**3 + 40*r**2 + 16*r**2 + 40*r + 25",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 457,
+   "relation": "16*r**4 + 32*r**3 - 8*r**2 - 24*r + 25 = 16*r**4 + 32*r**3 - 40*r**2 + 16*r**2 - 40*r + 25",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 457,
+   "relation": "-8*r**2 - 24*r = 40*r**2 + 16*r**2 + 40*r",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 457,
+   "relation": "-8*r**2 - 24*r = -40*r**2 + 16*r**2 - 40*r",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 457,
+   "relation": "-24*r - 24 = 40*r + 40",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 457,
+   "relation": "-24*r - 24 = -40*r - 40",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 457,
+   "relation": "-24*r - 24 = 40*r + 40",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 457,
+   "relation": "0 = 64*r + 64",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 457,
+   "relation": "0 = r+1",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 457,
+   "relation": "r = -1",
+   "category": "definition",
+   "note": "r defined"
+  },
+  {
+   "leaf": 457,
+   "relation": "p = -1/2",
+   "category": "definition",
+   "note": "p defined"
+  },
+  {
+   "leaf": 462,
+   "relation": "a = -1",
+   "category": "definition",
+   "note": "a defined"
+  },
+  {
+   "leaf": 462,
+   "relation": "b = 1",
+   "category": "definition",
+   "note": "b defined"
+  },
+  {
+   "leaf": 464,
+   "relation": "a = 1",
+   "category": "definition",
+   "note": "a defined"
+  },
+  {
+   "leaf": 464,
+   "relation": "b = 3",
+   "category": "definition",
+   "note": "b defined"
+  },
+  {
+   "leaf": 474,
+   "relation": "q**2 = p**2 + r**2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 474,
+   "relation": "t**2 = (f**4 + k**4) * (g**4 + h**4)",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 474,
+   "relation": "t**2 + f**4*h**4 + g**4*k**4 = c**2 + d**2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 474,
+   "relation": "c**2 + d**2 = f**4*g**4 + h**4*k**4",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 474,
+   "relation": "t**2 = f**4*g**4 - f**4*h**4 + h**4*k**4 - g**4*k**4",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 477,
+   "relation": "q**2 = ((f**2+g**2)/(2*f*g)) * ((h**2+k**2)/(2*h*k))",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 480,
+   "relation": "(1 - 2*(5/4)**2) / (2*(5/4)) = 17/20",
+   "category": "anomaly",
+   "note": "lhs -0.85 != rhs 0.85"
+  },
+  {
+   "leaf": 482,
+   "relation": "6*g+1 = 53",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 482,
+   "relation": "g = 26/3",
+   "category": "definition",
+   "note": "g defined"
+  },
+  {
+   "leaf": 482,
+   "relation": "20*p + 68 = g**2*p - 2*g",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 482,
+   "relation": "496/9*p = 256/3",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 482,
+   "relation": "p = 48/31",
+   "category": "definition",
+   "note": "p defined"
+  },
+  {
+   "leaf": 482,
+   "relation": "q = 189/31",
+   "category": "definition",
+   "note": "q defined"
+  },
+  {
+   "leaf": 482,
+   "relation": "q = 4/3*p - 1/3",
+   "category": "definition",
+   "note": "q defined"
+  },
+  {
+   "leaf": 482,
+   "relation": "q+1 = 4/3*p + 2/3",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 482,
+   "relation": "9*(4*p-1)*(p+1)**2 + 64*p**2*(2*p+1)**2 = 400*p**4 + 472*p**3 + 73*p**2 - 54*p + 9",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 482,
+   "relation": "472*p + 73 = -360*p + 201",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 482,
+   "relation": "p = 2/13",
+   "category": "definition",
+   "note": "p defined"
+  },
+  {
+   "leaf": 482,
+   "relation": "q = -5/39",
+   "category": "definition",
+   "note": "q defined"
+  },
+  {
+   "leaf": 482,
+   "relation": "472*p+73 = 360*p-39",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 482,
+   "relation": "p = -1",
+   "category": "definition",
+   "note": "p defined"
+  },
+  {
+   "leaf": 482,
+   "relation": "q+1 = (p*t+p+t+1)/(p+t)",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 482,
+   "relation": "q-1 = (p*t-p-t+1)/(p+t)",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 488,
+   "relation": "x**3 + y**3 = z**3",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 488,
+   "relation": "z**3 - y**3 = x**3",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 488,
+   "relation": "x = m*a",
+   "category": "definition",
+   "note": "x defined"
+  },
+  {
+   "leaf": 488,
+   "relation": "y = m*b",
+   "category": "definition",
+   "note": "y defined"
+  },
+  {
+   "leaf": 488,
+   "relation": "x**3 + y**3 = m**3*a**3 + m**3*b**3",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 488,
+   "relation": "(x+y)/2 = p",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 488,
+   "relation": "(x-y)/2 = q",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 488,
+   "relation": "x = p + q",
+   "category": "definition",
+   "note": "x defined"
+  },
+  {
+   "leaf": 488,
+   "relation": "y = p - q",
+   "category": "definition",
+   "note": "y defined"
+  },
+  {
+   "leaf": 488,
+   "relation": "(p+q)**3 = x**3",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 488,
+   "relation": "(p-q)**3 = y**3",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 488,
+   "relation": "x**3 + y**3 = 2*p**3 + 6*p*q**2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 488,
+   "relation": "x**3 - y**3 = 6*p**2*q + 2*q**3",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 496,
+   "relation": "30**3 = 22**3 + 58**3 - 54**3",
+   "category": "anomaly",
+   "note": "lhs 27000 != rhs 48296"
+  },
+  {
+   "leaf": 495,
+   "relation": "(ft+3*g*u)**2 = f**2*t**2 + 6*f*g*t*u + 9*g**2*u**2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 495,
+   "relation": "(ft + 3*g*u) * (f**2 + 3*g**2) * (t**2 + 3*u**2) = p*(p**2+3*q**2)",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 495,
+   "relation": "(ht + 3*k*u) * (h**2 + 3*k**2) * (t**2 + 3*u**2) = s*(s**2+3*r**2)",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 495,
+   "relation": "f*t*(f**2 + 3*g**2) + 3*g*u*(f**2 + 3*g**2) = (ft+3*g*u)*(f**2+3*g**2)",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 495,
+   "relation": "h*t*(h**2 + 3*k**2) + 3*k*u*(h**2 + 3*k**2) = (ht+3*k*u)*(h**2+3*k**2)",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 498,
+   "relation": "18 * (-135/16 / 9) = -135/16",
+   "category": "anomaly",
+   "note": "lhs -16.875 != rhs -8.4375"
+  },
+  {
+   "leaf": 503,
+   "relation": "Product(((2*n+1)**2)/((2*n)*(2*n+2)), (n, 1, oo)) = 4/pi",
+   "category": "18c-convention",
+   "note": "division by zero / infinity"
+  },
+  {
+   "leaf": 499,
+   "relation": "576**2 + 1080**2 = 1500624",
+   "category": "anomaly",
+   "note": "lhs 1.49818e+06 != rhs 1.50062e+06"
+  },
+  {
+   "leaf": 509,
+   "relation": "pi = 3.1415926535",
+   "category": "approximation",
+   "note": "exact 3.14159265359 vs printed 3.1415926535"
+  },
+  {
+   "leaf": 517,
+   "relation": "a = A/A_prime + 1/(A_prime*b)",
+   "category": "definition",
+   "note": "a defined"
+  },
+  {
+   "leaf": 517,
+   "relation": "a = B/B_prime - 1/(B_prime*(B_prime*c + A_prime))",
+   "category": "definition",
+   "note": "a defined"
+  },
+  {
+   "leaf": 517,
+   "relation": "a = C/C_prime + 1/(C_prime*(C_prime*d + B_prime))",
+   "category": "definition",
+   "note": "a defined"
+  },
+  {
+   "leaf": 517,
+   "relation": "a = D/D_prime - 1/(D_prime*(D_prime*e + C_prime))",
+   "category": "definition",
+   "note": "a defined"
+  },
+  {
+   "leaf": 516,
+   "relation": "(c*d + B)/(c_prime*d + B_prime) - c/c_prime = (B*C_prime - C*B_prime)/(c_prime*(c_prime*d + B_prime))",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 516,
+   "relation": "B*C_prime - C*B_prime = 1",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 529,
+   "relation": "400/97 = 86400/20929",
+   "category": "approximation",
+   "note": "approximately equal (4.12371 vs 4.12824)"
+  },
+  {
+   "leaf": 538,
+   "relation": "p_iv - a*q_iv = 1",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 548,
+   "relation": "(mu_prime*A + B/2)**2 - A*(mu_prime**2*A + mu_prime*B + c) = (1/4)*B**2 - A*C",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 547,
+   "relation": "p_2*q_1 - q_2*p_1 = 1",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 547,
+   "relation": "p_3*q_2 - q_3*p_2 = -1",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 547,
+   "relation": "p_4*q_3 - q_4*p_3 = 1",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 556,
+   "relation": "p**2 - K*q**2 = -H",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 556,
+   "relation": "p*s - q*r = -1",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 556,
+   "relation": "q*sqrt(K) - p = H/(q*(sqrt(K) + p/q))",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 556,
+   "relation": "s*sqrt(K) - r = (1/q)*(s*H/(q*(sqrt(K) + p/q)) - 1)",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 570,
+   "relation": "p = 23",
+   "category": "definition",
+   "note": "p defined"
+  },
+  {
+   "leaf": 570,
+   "relation": "q = 16",
+   "category": "definition",
+   "note": "q defined"
+  },
+  {
+   "leaf": 577,
+   "relation": "A_prime*v**2 - 2*n*v + A = (n_prime**2 - B)/A_prime",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 592,
+   "relation": "m**2*B_p - 2*m*n + B = (n_p**2 - A)/B_p",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 592,
+   "relation": "m_p**2*B_pp - 2*m_p*n_p + B_p = (n_pp**2 - A)/B_pp",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 595,
+   "relation": "Q0 = 0",
+   "category": "definition",
+   "note": "Q0 defined"
+  },
+  {
+   "leaf": 595,
+   "relation": "P0 = 1",
+   "category": "definition",
+   "note": "P0 defined"
+  },
+  {
+   "leaf": 595,
+   "relation": "xi = 0",
+   "category": "definition",
+   "note": "xi defined"
+  },
+  {
+   "leaf": 602,
+   "relation": "(T**2 - A*v**2)**3 = 1",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 602,
+   "relation": "T**2 - A*v**2 = 1",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 602,
+   "relation": "(T - v*sqrt(A))**3 * (T + v*sqrt(A))**4 = T + v*sqrt(A)",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 602,
+   "relation": "(T - v*sqrt(A))**4 * (T + v*sqrt(A))**3 = T - v*sqrt(A)",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 602,
+   "relation": "t**2 - A*u**2 = 1",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 611,
+   "relation": "18**2 - 13*5**2 = 1",
+   "category": "anomaly",
+   "note": "lhs -1 != rhs 1"
+  },
+  {
+   "leaf": 611,
+   "relation": "-35/12 = -3",
+   "category": "anomaly",
+   "note": "lhs -2.91667 != rhs -3"
   }
  ]
 }

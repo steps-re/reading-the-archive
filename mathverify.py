@@ -9,7 +9,9 @@ transcription trustworthy:
   numeric_true(eq)   -> if symbolic proof fails, does it hold at random test points
   triage(eqs)        -> sort flagged equalities into: approximation (verified against the
                         printed decimals), definition, 18c-convention (div-by-zero, complex
-                        roots, Euler's infinite i), numerically-verified, or genuine anomaly
+                        roots, Euler's infinite i), numerically-verified, series-expansion,
+                        context-equation (has free variables; an equation being solved, not a
+                        universal identity), or genuine anomaly (a pure-numeric mismatch)
 
 No credentials and no network. Depends only on sympy and matplotlib. The transcription step
 (image -> LaTeX) is pluggable; this is the part that turns a guess into a checked fact.
@@ -21,7 +23,8 @@ import signal
 import sympy as sp
 
 LOC = {"pi": sp.pi, "sin": sp.sin, "cos": sp.cos, "tan": sp.tan, "e": sp.E,
-       "log": sp.log, "sqrt": sp.sqrt, "a": sp.Symbol("a", positive=True)}
+       "log": sp.log, "log10": lambda x: sp.log(x, 10), "sqrt": sp.sqrt,
+       "lcm": sp.lcm, "gcd": sp.gcd, "a": sp.Symbol("a", positive=True)}
 
 # Period typography that is faithful transcription but breaks matplotlib mathtext.
 # Normalized ONLY for the render probe; the transcription itself is never altered.
@@ -196,7 +199,19 @@ def triage(eq):
     # variations. Flag as such rather than calling a valid differential relation an error.
     if re.search(r"d[a-zA-Z](?![A-Za-z0-9])|Derivative|Integral", eq):
         return "differential-relation", "contains differentials/derivatives; not a universal identity"
-    return "anomaly", "unverified as a universal identity (may be context-dependent)"
+    # An equality with FREE VARIABLES that is not a universal identity is almost never an error in a
+    # teaching text: it is an equation being solved (x**2 = 2*x - 2), a substitution/definition
+    # ((x+y)/2 = p), or a problem-specific relation (Pell's t**2 - A*u**2 = 1). The validator cannot
+    # know the local hypotheses that make it true, so calling it an "anomaly" would be a false alarm.
+    # A genuine numeric error can only be asserted when BOTH sides are constant (handled above by
+    # _numeric_verdict). Reserve "anomaly" for that; everything symbolic-but-unproven is context.
+    try:
+        expr = sp.sympify(L, locals=LOC) - sp.sympify(R, locals=LOC)
+        if expr.free_symbols:
+            return "context-equation", "has free variables; an equation/definition, not a universal identity"
+    except Exception:
+        pass
+    return "anomaly", "both sides constant but not equal, or unparseable as an identity"
 
 
 def verify(eq):
