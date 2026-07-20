@@ -26,6 +26,10 @@ The headline: we transcribed the value of π Euler printed, 127 digits. **112 we
 - `PAPER.md` — the methods write-up, "Reading the Archive."
 - `HANDWRITTEN_MATH_TRAINING.md` — the plan for extending this to handwritten mathematics.
 
+## Where the validator applies (a real limit, found the hard way)
+
+The symbolic/numeric check has a domain. It is powerful on text rich in **closed-form and numeric identities** — the *Introductio* is full of them, which is why it surfaced de Lagny's π error. Run the same pipeline over Euler's *Methodus inveniendi* (1744, the calculus of variations), and the transcription is just as clean (5,622 expressions, no read errors), but the "equalities" are mostly **differential relations, curve definitions, first integrals, and problem-specific equations being solved** — none of which are universal identities. The validator cannot check those, and naively flags them. The fix in this repo is to classify differential relations explicitly rather than call a valid derivation an error, but the deeper lesson stands: **the transcription generalizes; the validator's power depends on the text actually containing identities.** We report this because a fake "error" would be worse than an honest limit.
+
 ## Honest limits
 
 These are machine transcriptions. The de Lagny finding is confirmed against known history; the transcriptions themselves rest on the checks above, not peer review. The method reads printed and clean-hand material well and cannot yet read difficult or non-Latin hands, or handwritten mathematics, without dedicated work. Every failure is labeled rather than hidden. A tool a scholar can trust is not one that is usually right. It is one that tells you, every time, how it knows.

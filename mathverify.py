@@ -98,7 +98,12 @@ def triage(eq):
             pass
     if re.search(r"\(-\d+\)\*\*\(1/", eq):
         return "18c-convention", "real-vs-complex root branch"
-    return "anomaly", "false as written"
+    # differential relations / derivations (dx, dy, ds, dt, dp..., derivatives, integrals) are
+    # NOT universal identities; the identity-checker does not apply. Common in the calculus of
+    # variations. Flag as such rather than calling a valid differential relation an error.
+    if re.search(r"d[a-zA-Z](?![A-Za-z0-9])|Derivative|Integral", eq):
+        return "differential-relation", "contains differentials/derivatives; not a universal identity"
+    return "anomaly", "unverified as a universal identity (may be context-dependent)"
 
 
 if __name__ == "__main__":
