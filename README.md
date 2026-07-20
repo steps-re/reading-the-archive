@@ -19,6 +19,8 @@ Run over all 356 leaves of **Euler's *Introductio in analysin infinitorum* (1748
 
 The headline: we transcribed the value of π Euler printed, 127 digits. **112 were correct, and the pipeline flagged the 113th** (page reads `7`, π is `8`). That is not an OCR error. It is **de Lagny's mistake**, computed by hand in 1719, uncaught until Vega in 1794, and reproduced by Euler in 1748. The tool transcribed faithfully and the validator pointed straight at a 250-year-old error. A second candidate, in Euler's printed `1/π`, is flagged but not confirmed.
 
+Run over a second text — **Euler's *Elements of Algebra*** — the same pipeline surfaced a different kind of error, one Euler made himself. In the chapter on imaginary quantities he writes `sqrt(-2) · sqrt(-3) = sqrt(6)` (and `sqrt(-1) · sqrt(-4) = 2`). The correct value is `−sqrt(6)`: the rule `sqrt(a)·sqrt(b) = sqrt(ab)` does not hold once the roots go imaginary. This is a genuine mathematical mistake, famous enough that it appears in histories of complex numbers, and the numeric checker flags it without being told to look. Two texts, two different failure modes caught by the same four checks — a faithfully-transcribed printing error and a real author error — see [`euler_algebra_errata.json`](euler_algebra_errata.json).
+
 ## What's here
 
 - `mathverify.py` — the verification stack (render / symbolic / numeric / triage). Run `python mathverify.py` for a demo.

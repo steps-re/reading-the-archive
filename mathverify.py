@@ -106,6 +106,64 @@ def numeric_true(eq, points=(0.317, 0.733, 1.171, 0.529), tol=1e-7):
 def _is_decimal(s): return bool(re.fullmatch(r"-?\d+\.\d+", s.strip()))
 
 
+def _fmt(z, n=6):
+    z = complex(z)
+    return f"{z.real:.{n}g}" if abs(z.imag) < 1e-9 else f"{z.real:.{n}g}{z.imag:+.{n}g}i"
+
+
+def _numeric_verdict(L, R):
+    """If BOTH sides are constant (no free symbols), decide numerically. Handles printed decimals
+    (with digit-precision note, so de Lagny's pi stays an anomaly) AND expressions that evaluate to
+    a number (e.g. log(0.365,10) = -1 + 0.5622929). Complex-safe (Euler's imaginary products)."""
+    try:
+        lv = sp.sympify(L, locals=LOC); rv = sp.sympify(R, locals=LOC)
+        if lv.free_symbols or rv.free_symbols: return None
+        if _is_decimal(R) or _is_decimal(L):
+            # HIGH PRECISION (sympy, not float64) so a printed constant wrong at the 25th digit
+            # is still caught. This is what surfaces the de Lagny / 1-pi findings.
+            dec = R if _is_decimal(R) else L
+            exact_expr = lv if _is_decimal(R) else rv
+            ndp = len(dec.split(".")[1]); prec = ndp + 15
+            exact = exact_expr.evalf(prec); printed = sp.Float(dec, prec)
+            if not exact.is_real: return None            # let the complex branch below handle it
+            close = abs(exact - printed) < sp.Float(10) ** (-(ndp - 1))
+            note = f"exact {str(sp.N(exact, ndp + 2))} vs printed {dec}"
+            return ("approximation" if close else "anomaly", note)
+        a = complex(lv.evalf(30)); b = complex(rv.evalf(30))
+        rel = abs(a - b) / max(abs(a), abs(b), 1e-12)
+        if rel < 1e-4 or abs(a - b) < 1e-2:   # relative match, or an approximate root (poly ~ 0)
+            return "approximation", f"approximately equal ({_fmt(a)} vs {_fmt(b)})"
+        return "anomaly", f"lhs {_fmt(a)} != rhs {_fmt(b)}"
+    except Exception:
+        return None
+
+
+def _series_like(L, R):
+    """True if the equality holds as a truncated series: at a small argument the two sides agree
+    to within 2%, and the agreement tightens as the argument shrinks (series convergence).
+    Catches Euler's finite geometric/power-series expansions, which are not errors."""
+    try:
+        le = sp.sympify(L, locals=LOC); re_ = sp.sympify(R, locals=LOC)
+        syms = sorted(le.free_symbols | re_.free_symbols, key=str)
+        if not syms: return False
+        for v in syms:
+            others = {s: sp.Float(0.9 + 0.11 * k) for k, s in enumerate(x for x in syms if x != v)}
+            errs = []
+            for xv in (0.05, 0.02):
+                try:
+                    lo = complex(le.subs({**others, v: sp.Float(xv)}).evalf())
+                    ro = complex(re_.subs({**others, v: sp.Float(xv)}).evalf())
+                    if abs(lo) < 1e-12: errs = []; break
+                    errs.append(abs(lo - ro) / abs(lo))
+                except Exception:
+                    errs = []; break
+            if len(errs) == 2 and errs[0] < 0.02 and errs[1] <= errs[0]:
+                return True
+        return False
+    except Exception:
+        return False
+
+
 def triage(eq):
     """Classify a flagged equality. Returns (category, note). Categories:
     approximation | definition | 18c-convention | numerically-verified | anomaly | unparsed."""
@@ -113,20 +171,12 @@ def triage(eq):
     L, R = [x.strip() for x in eq.split("=", 1)]
     if re.fullmatch(r"[A-Za-z]\w*", L) and not _is_decimal(R):
         return "definition", f"{L} defined"
-    dec, expr = (R, L) if _is_decimal(R) else ((L, R) if _is_decimal(L) else (None, None))
-    if dec is not None:
-        try:
-            val = sp.sympify(expr, locals=LOC).evalf(30); ndp = len(dec.split(".")[1])
-            ev = f"{float(val):.{ndp + 2}f}"
-            if abs(val - sp.Float(dec)) < sp.Float(10) ** (-(ndp - 1)):
-                return "approximation", f"exact {ev} matches printed {dec}"
-            return "anomaly", f"printed {dec}, exact {ev}"
-        except Exception:
-            return "18c-convention", "numeric / undefined"
-    if numeric_true(eq) is True:
-        return "numerically-verified", "holds at all test points (SymPy could not reduce)"
+    # 18th-c. conventions FIRST — these look like numeric anomalies to a modern engine but are the
+    # author's own (valid-in-context) usage, so they must be caught before the numeric verdict.
     if re.search(r"1/0|0\*\*-|0\*\*\(-|/0\b|zoo|oo", eq):
         return "18c-convention", "division by zero / infinity"
+    if re.search(r"\(-\d+\)\*\*\(1/", eq):
+        return "18c-convention", "real-vs-complex root branch"
     if re.search(r"\bi\b", eq):
         try:
             ii = sp.Symbol("i", positive=True); loc = dict(LOC); loc["i"] = ii
@@ -134,8 +184,13 @@ def triage(eq):
                 return "18c-convention", "holds as i -> infinity (Euler's infinite number)"
         except Exception:
             pass
-    if re.search(r"\(-\d+\)\*\*\(1/", eq):
-        return "18c-convention", "real-vs-complex root branch"
+    nv = _numeric_verdict(L, R)          # both sides numeric (any form) -> approximation or numeric anomaly
+    if nv is not None:
+        return nv
+    if numeric_true(eq) is True:
+        return "numerically-verified", "holds at all test points (SymPy could not reduce)"
+    if _series_like(L, R):               # a truncated series printed finitely is not an error
+        return "series-expansion", "holds as a truncated series (matches at a small argument)"
     # differential relations / derivations (dx, dy, ds, dt, dp..., derivatives, integrals) are
     # NOT universal identities; the identity-checker does not apply. Common in the calculus of
     # variations. Flag as such rather than calling a valid differential relation an error.

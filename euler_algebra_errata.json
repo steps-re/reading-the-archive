@@ -1,0 +1,875 @@
+{
+ "source": "Euler, Elements of Algebra, English ed. 1828 (Internet Archive elementsofalgebr00eule)",
+ "leaves": 627,
+ "expressions_checked": 14812,
+ "flagged": 97,
+ "triage_counts": {
+  "18c-convention": 7,
+  "anomaly": 44,
+  "numerically-verified": 9,
+  "approximation": 21,
+  "series-expansion": 5,
+  "definition": 11
+ },
+ "headline_finding": {
+  "what": "Euler's imaginary-number multiplication error",
+  "where": "Chapter XIII, Of Impossible or Imaginary Quantities (approx. leaf 80)",
+  "detail": "Euler writes sqrt(-a)*sqrt(-b) = sqrt(ab), e.g. sqrt(-2)*sqrt(-3) = sqrt(6) and sqrt(-1)*sqrt(-4) = 2. Correct value: sqrt(-2)*sqrt(-3) = -sqrt(6). A famous error Euler himself made.",
+  "instances": [
+   "sqrt(-2) * sqrt(-3) = sqrt(6)",
+   "sqrt(-1) * sqrt(-4) = sqrt(4)",
+   "sqrt(-1) * sqrt(-4) = 2",
+   "x - y*sqrt(-c) = m*(p - q*sqrt(-c))**2"
+  ]
+ },
+ "anomalies": [
+  {
+   "leaf": 65,
+   "relation": "7/12 = 56/72",
+   "category": "anomaly",
+   "note": "lhs 0.583333 != rhs 0.777778"
+  },
+  {
+   "leaf": 69,
+   "relation": "(20/100)/(18/100) = 3",
+   "category": "anomaly",
+   "note": "lhs 1.11111 != rhs 3"
+  },
+  {
+   "leaf": 80,
+   "relation": "sqrt(-2) * sqrt(-3) = sqrt(6)",
+   "category": "anomaly",
+   "note": "lhs -2.44949 != rhs 2.44949"
+  },
+  {
+   "leaf": 80,
+   "relation": "sqrt(-1) * sqrt(-4) = sqrt(4)",
+   "category": "anomaly",
+   "note": "lhs -2 != rhs 2"
+  },
+  {
+   "leaf": 80,
+   "relation": "sqrt(-1) * sqrt(-4) = 2",
+   "category": "anomaly",
+   "note": "lhs -2 != rhs 2"
+  },
+  {
+   "leaf": 115,
+   "relation": "(4*a**2 - 3*b + 2*c) + (3*a**2 + 2*b - 12*c) = 7*a**2 - b + 10*c",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 115,
+   "relation": "(a**4 + 2*a*b + b**2) + (-a**4 - 2*a**3*b + 3*b**3) = -2*a**3*b + 2*a*b + 4*b**3",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 121,
+   "relation": "(a**2-2*a*b)/a = a-2",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 219,
+   "relation": "25237465 / 211893 = 119",
+   "category": "anomaly",
+   "note": "lhs 119.105 != rhs 119"
+  },
+  {
+   "leaf": 238,
+   "relation": "ab - ac = a*(b-c)",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 238,
+   "relation": "bc - ab = b*(c-a)",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 247,
+   "relation": "9*3 + 15*9 - 186 = 25 - 5*8 + 4*9",
+   "category": "anomaly",
+   "note": "lhs -24 != rhs 21"
+  },
+  {
+   "leaf": 265,
+   "relation": "sqrt(156025/4 + 79200) = 485/2",
+   "category": "anomaly",
+   "note": "lhs 343.811 != rhs 242.5"
+  },
+  {
+   "leaf": 335,
+   "relation": "(10.2615)**4 - 3*(10.2615)**2 - 75*(10.2615) = 10000",
+   "category": "anomaly",
+   "note": "lhs 10002.2 != rhs 10000"
+  },
+  {
+   "leaf": 335,
+   "relation": "120*(34.6532)**3 + 3657*(34.6532)**2 - 38059*(34.6532) = 8007115",
+   "category": "anomaly",
+   "note": "lhs 8.06619e+06 != rhs 8.00712e+06"
+  },
+  {
+   "leaf": 334,
+   "relation": "x - 1 = 1",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 334,
+   "relation": "x**3 + x**2 + x = 100",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 362,
+   "relation": "a + b*x + f**2*x**2 = f**2*x**2 + 2*m*f*x/n + m**2/n**2",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 362,
+   "relation": "a + b*x = 2*m*f*x/n + m**2/n**2",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 362,
+   "relation": "n**2*a + n**2*b*x = 2*m*n*f*x + m**2",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 366,
+   "relation": "(3*5**2 - 2*6**2) / (3*6**2 - 2*5**2) = 3/38",
+   "category": "anomaly",
+   "note": "lhs 0.0517241 != rhs 0.0789474"
+  },
+  {
+   "leaf": 418,
+   "relation": "3*p = 1",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 423,
+   "relation": "6+2*y = 25/4",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 423,
+   "relation": "7 + (36/7)**2 = 279841/20736",
+   "category": "anomaly",
+   "note": "lhs 33.449 != rhs 13.4954"
+  },
+  {
+   "leaf": 426,
+   "relation": "49*p**2 + 49*q**2 = 49*(p**2 + q)",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 433,
+   "relation": "x - y*sqrt(-c) = m*(p - q*sqrt(-c))**2",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 433,
+   "relation": "x**2 + c*y**2 = m**2*(p**2 + c*q**2)**2",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 442,
+   "relation": "38 = 2**5 - 10*2**3*1**2 + 5*2*1**4",
+   "category": "anomaly",
+   "note": "lhs 38 != rhs -38"
+  },
+  {
+   "leaf": 465,
+   "relation": "p**2 + 3600*m**2 = r**2",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 465,
+   "relation": "p**2 + 10800*m**2 = s**2",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 465,
+   "relation": "7200*m**2 = s**2 - r**2",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 491,
+   "relation": "x**3 = y**3 - 3*a*y**2 + 3*a**2*y - a**3",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 504,
+   "relation": "1/(a-alpha) = b",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 504,
+   "relation": "a - alpha = 1/b",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 513,
+   "relation": "D/C = delta + B/C",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 549,
+   "relation": "r**0 = A*(p**0 - a*q**0) * (p**0 - b*q**0)",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 596,
+   "relation": "v**2 - A*xi**2 = M",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 596,
+   "relation": "cy**2 - 2*n*y*z + B*z**2 = 1",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 596,
+   "relation": "c*p**2 - 2*n*p*q + B*q**2 = 1",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 596,
+   "relation": "p*s - q*r = 1",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 613,
+   "relation": "33**2 - 13 = 1010",
+   "category": "anomaly",
+   "note": "lhs 1076 != rhs 1010"
+  },
+  {
+   "leaf": 613,
+   "relation": "33/10 = 3",
+   "category": "anomaly",
+   "note": "lhs 3.3 != rhs 3"
+  },
+  {
+   "leaf": 614,
+   "relation": "-33/10 = -3",
+   "category": "anomaly",
+   "note": "lhs -3.3 != rhs -3"
+  },
+  {
+   "leaf": 614,
+   "relation": "(9-97)/10 = -7",
+   "category": "anomaly",
+   "note": "lhs -8.8 != rhs -7"
+  }
+ ],
+ "all_flags": [
+  {
+   "leaf": 60,
+   "relation": "1/(1/oo) = oo",
+   "category": "18c-convention",
+   "note": "division by zero / infinity"
+  },
+  {
+   "leaf": 60,
+   "relation": "1/0 = oo",
+   "category": "18c-convention",
+   "note": "division by zero / infinity"
+  },
+  {
+   "leaf": 60,
+   "relation": "2/0 = 2 * (1/0)",
+   "category": "18c-convention",
+   "note": "division by zero / infinity"
+  },
+  {
+   "leaf": 60,
+   "relation": "1/0 = 1/(1-1)",
+   "category": "18c-convention",
+   "note": "division by zero / infinity"
+  },
+  {
+   "leaf": 65,
+   "relation": "7/12 = 56/72",
+   "category": "anomaly",
+   "note": "lhs 0.583333 != rhs 0.777778"
+  },
+  {
+   "leaf": 69,
+   "relation": "(20/100)/(18/100) = 3",
+   "category": "anomaly",
+   "note": "lhs 1.11111 != rhs 3"
+  },
+  {
+   "leaf": 80,
+   "relation": "sqrt(-2) * sqrt(-3) = sqrt(6)",
+   "category": "anomaly",
+   "note": "lhs -2.44949 != rhs 2.44949"
+  },
+  {
+   "leaf": 80,
+   "relation": "sqrt(-1) * sqrt(-4) = sqrt(4)",
+   "category": "anomaly",
+   "note": "lhs -2 != rhs 2"
+  },
+  {
+   "leaf": 80,
+   "relation": "sqrt(-1) * sqrt(-4) = 2",
+   "category": "anomaly",
+   "note": "lhs -2 != rhs 2"
+  },
+  {
+   "leaf": 85,
+   "relation": "(-8)**(1/3) = -2",
+   "category": "18c-convention",
+   "note": "real-vs-complex root branch"
+  },
+  {
+   "leaf": 85,
+   "relation": "(-27)**(1/3) = -3",
+   "category": "18c-convention",
+   "note": "real-vs-complex root branch"
+  },
+  {
+   "leaf": 85,
+   "relation": "(-12)**(1/3) = -(12**(1/3))",
+   "category": "18c-convention",
+   "note": "real-vs-complex root branch"
+  },
+  {
+   "leaf": 101,
+   "relation": "log(a**2, a) = 2",
+   "category": "numerically-verified",
+   "note": "holds at all test points (SymPy could not reduce)"
+  },
+  {
+   "leaf": 101,
+   "relation": "log(a**3, a) = 3",
+   "category": "numerically-verified",
+   "note": "holds at all test points (SymPy could not reduce)"
+  },
+  {
+   "leaf": 101,
+   "relation": "log(a**4, a) = 4",
+   "category": "numerically-verified",
+   "note": "holds at all test points (SymPy could not reduce)"
+  },
+  {
+   "leaf": 101,
+   "relation": "log(a**5, a) = 5",
+   "category": "numerically-verified",
+   "note": "holds at all test points (SymPy could not reduce)"
+  },
+  {
+   "leaf": 101,
+   "relation": "log(1/a, a) = -1",
+   "category": "numerically-verified",
+   "note": "holds at all test points (SymPy could not reduce)"
+  },
+  {
+   "leaf": 101,
+   "relation": "log(1/a**2, a) = -2",
+   "category": "numerically-verified",
+   "note": "holds at all test points (SymPy could not reduce)"
+  },
+  {
+   "leaf": 101,
+   "relation": "log(1/a**3, a) = -3",
+   "category": "numerically-verified",
+   "note": "holds at all test points (SymPy could not reduce)"
+  },
+  {
+   "leaf": 101,
+   "relation": "log(1/a**4, a) = -4",
+   "category": "numerically-verified",
+   "note": "holds at all test points (SymPy could not reduce)"
+  },
+  {
+   "leaf": 101,
+   "relation": "log(c, a) + log(d, a) = log(c*d, a)",
+   "category": "numerically-verified",
+   "note": "holds at all test points (SymPy could not reduce)"
+  },
+  {
+   "leaf": 109,
+   "relation": "log(50, 10) = 1.6989700",
+   "category": "approximation",
+   "note": "exact 1.69897000 vs printed 1.6989700"
+  },
+  {
+   "leaf": 109,
+   "relation": "log(800, 10) = 2.9030900",
+   "category": "approximation",
+   "note": "exact 2.90308999 vs printed 2.9030900"
+  },
+  {
+   "leaf": 109,
+   "relation": "log(2290, 10) = 3.3598355",
+   "category": "approximation",
+   "note": "exact 3.35983548 vs printed 3.3598355"
+  },
+  {
+   "leaf": 109,
+   "relation": "log(3, 10) = 0.4771213",
+   "category": "approximation",
+   "note": "exact 0.477121255 vs printed 0.4771213"
+  },
+  {
+   "leaf": 109,
+   "relation": "log(3000000, 10) = 6.4771213",
+   "category": "approximation",
+   "note": "exact 6.47712125 vs printed 6.4771213"
+  },
+  {
+   "leaf": 110,
+   "relation": "log(0.365, 10) = -1 + 0.5622929",
+   "category": "approximation",
+   "note": "approximately equal (-0.437707 vs -0.437707)"
+  },
+  {
+   "leaf": 110,
+   "relation": "log(0.0365, 10) = -2 + 0.5622929",
+   "category": "approximation",
+   "note": "approximately equal (-1.43771 vs -1.43771)"
+  },
+  {
+   "leaf": 115,
+   "relation": "(4*a**2 - 3*b + 2*c) + (3*a**2 + 2*b - 12*c) = 7*a**2 - b + 10*c",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 115,
+   "relation": "(a**4 + 2*a*b + b**2) + (-a**4 - 2*a**3*b + 3*b**3) = -2*a**3*b + 2*a*b + 4*b**3",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 121,
+   "relation": "(a**2-2*a*b)/a = a-2",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 134,
+   "relation": "a*x/(a-x) = x + x**2/a + x**3/a**2 + x**4/a**3",
+   "category": "series-expansion",
+   "note": "holds as a truncated series (matches at a small argument)"
+  },
+  {
+   "leaf": 134,
+   "relation": "b/(a+x) = (b/a) * (1 - x/a + x**2/a**2 - x**3/a**3)",
+   "category": "series-expansion",
+   "note": "holds as a truncated series (matches at a small argument)"
+  },
+  {
+   "leaf": 134,
+   "relation": "a**2/(x+b) = (a**2/x) * (1 - b/x + b**2/x**2 - b**3/x**3)",
+   "category": "series-expansion",
+   "note": "holds as a truncated series (matches at a small argument)"
+  },
+  {
+   "leaf": 134,
+   "relation": "(1+x)/(1-x) = 1 + 2*x + 2*x**2 + 2*x**3 + 2*x**4",
+   "category": "series-expansion",
+   "note": "holds as a truncated series (matches at a small argument)"
+  },
+  {
+   "leaf": 134,
+   "relation": "a**2/(a+x)**2 = 1 - 2*x/a + 3*x**2/a**2 - 4*x**3/a**3",
+   "category": "series-expansion",
+   "note": "holds as a truncated series (matches at a small argument)"
+  },
+  {
+   "leaf": 181,
+   "relation": "d = m - 2",
+   "category": "definition",
+   "note": "d defined"
+  },
+  {
+   "leaf": 200,
+   "relation": "207360000 / 5280 = 39272",
+   "category": "approximation",
+   "note": "approximately equal (39272.7 vs 39272)"
+  },
+  {
+   "leaf": 216,
+   "relation": "log(21, 10) = 1.3222193",
+   "category": "approximation",
+   "note": "exact 1.32221929 vs printed 1.3222193"
+  },
+  {
+   "leaf": 216,
+   "relation": "log(20, 10) = 1.3010300",
+   "category": "approximation",
+   "note": "exact 1.30103000 vs printed 1.3010300"
+  },
+  {
+   "leaf": 216,
+   "relation": "1.3222193 - 1.3010300 = 0.0211893",
+   "category": "approximation",
+   "note": "exact 0.0211893000 vs printed 0.0211893"
+  },
+  {
+   "leaf": 216,
+   "relation": "log(21/20, 10) = 0.0211893",
+   "category": "approximation",
+   "note": "exact 0.0211892991 vs printed 0.0211893"
+  },
+  {
+   "leaf": 216,
+   "relation": "100 * log(21/20, 10) = 2.1189300",
+   "category": "approximation",
+   "note": "exact 2.11892991 vs printed 2.1189300"
+  },
+  {
+   "leaf": 216,
+   "relation": "2.1189300 + 3.0000000 = 5.1189300",
+   "category": "approximation",
+   "note": "exact 5.11893000 vs printed 5.1189300"
+  },
+  {
+   "leaf": 219,
+   "relation": "log(334, 10) = 2.5237465",
+   "category": "approximation",
+   "note": "exact 2.52374647 vs printed 2.5237465"
+  },
+  {
+   "leaf": 219,
+   "relation": "log(21/20, 10) = 0.0211893",
+   "category": "approximation",
+   "note": "exact 0.0211892991 vs printed 0.0211893"
+  },
+  {
+   "leaf": 219,
+   "relation": "25237465 / 211893 = 119",
+   "category": "anomaly",
+   "note": "lhs 119.105 != rhs 119"
+  },
+  {
+   "leaf": 238,
+   "relation": "ab - ac = a*(b-c)",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 238,
+   "relation": "bc - ab = b*(c-a)",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 247,
+   "relation": "9*3 + 15*9 - 186 = 25 - 5*8 + 4*9",
+   "category": "anomaly",
+   "note": "lhs -24 != rhs 21"
+  },
+  {
+   "leaf": 265,
+   "relation": "sqrt(156025/4 + 79200) = 485/2",
+   "category": "anomaly",
+   "note": "lhs 343.811 != rhs 242.5"
+  },
+  {
+   "leaf": 313,
+   "relation": "sqrt(21) = 4.5825",
+   "category": "approximation",
+   "note": "exact 4.58258 vs printed 4.5825"
+  },
+  {
+   "leaf": 328,
+   "relation": "(2*(91/72)**3 + 2)/(3*(91/72)**2) = 162130596/128634294",
+   "category": "approximation",
+   "note": "approximately equal (1.25993 vs 1.2604)"
+  },
+  {
+   "leaf": 335,
+   "relation": "(5.13450)**3 + 2*(5.13450)**2 - 23*(5.13450) - 70 = 0",
+   "category": "approximation",
+   "note": "approximately equal (-0.00603261 vs 0)"
+  },
+  {
+   "leaf": 335,
+   "relation": "(1.028039)**3 - 15*(1.028039)**2 + 63*(1.028039) - 50 = 0",
+   "category": "approximation",
+   "note": "approximately equal (-8.1824e-06 vs 0)"
+  },
+  {
+   "leaf": 335,
+   "relation": "(10.2615)**4 - 3*(10.2615)**2 - 75*(10.2615) = 10000",
+   "category": "anomaly",
+   "note": "lhs 10002.2 != rhs 10000"
+  },
+  {
+   "leaf": 335,
+   "relation": "(8.4144)**5 + 2*(8.4144)**4 + 3*(8.4144)**3 + 4*(8.4144)**2 + 5*(8.4144) = 54321",
+   "category": "approximation",
+   "note": "approximately equal (54319.3 vs 54321)"
+  },
+  {
+   "leaf": 335,
+   "relation": "120*(34.6532)**3 + 3657*(34.6532)**2 - 38059*(34.6532) = 8007115",
+   "category": "anomaly",
+   "note": "lhs 8.06619e+06 != rhs 8.00712e+06"
+  },
+  {
+   "leaf": 334,
+   "relation": "x - 1 = 1",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 334,
+   "relation": "x = 2",
+   "category": "definition",
+   "note": "x defined"
+  },
+  {
+   "leaf": 334,
+   "relation": "x**3 + x**2 + x = 100",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 362,
+   "relation": "a + b*x + f**2*x**2 = f**2*x**2 + 2*m*f*x/n + m**2/n**2",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 362,
+   "relation": "a + b*x = 2*m*f*x/n + m**2/n**2",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 362,
+   "relation": "n**2*a + n**2*b*x = 2*m*n*f*x + m**2",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 366,
+   "relation": "(3*5**2 - 2*6**2) / (3*6**2 - 2*5**2) = 3/38",
+   "category": "anomaly",
+   "note": "lhs 0.0517241 != rhs 0.0789474"
+  },
+  {
+   "leaf": 416,
+   "relation": "x = (p**3 - a)/b",
+   "category": "definition",
+   "note": "x defined"
+  },
+  {
+   "leaf": 418,
+   "relation": "3*p = 1",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 418,
+   "relation": "p = 1/3",
+   "category": "definition",
+   "note": "p defined"
+  },
+  {
+   "leaf": 423,
+   "relation": "6+2*y = 25/4",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 423,
+   "relation": "y = 1/8",
+   "category": "definition",
+   "note": "y defined"
+  },
+  {
+   "leaf": 423,
+   "relation": "z = 9/8",
+   "category": "definition",
+   "note": "z defined"
+  },
+  {
+   "leaf": 423,
+   "relation": "7 + (36/7)**2 = 279841/20736",
+   "category": "anomaly",
+   "note": "lhs 33.449 != rhs 13.4954"
+  },
+  {
+   "leaf": 426,
+   "relation": "49*p**2 + 49*q**2 = 49*(p**2 + q)",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 433,
+   "relation": "x - y*sqrt(-c) = m*(p - q*sqrt(-c))**2",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 433,
+   "relation": "x**2 + c*y**2 = m**2*(p**2 + c*q**2)**2",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 442,
+   "relation": "38 = 2**5 - 10*2**3*1**2 + 5*2*1**4",
+   "category": "anomaly",
+   "note": "lhs 38 != rhs -38"
+  },
+  {
+   "leaf": 465,
+   "relation": "p**2 + 3600*m**2 = r**2",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 465,
+   "relation": "p**2 + 10800*m**2 = s**2",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 465,
+   "relation": "7200*m**2 = s**2 - r**2",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 491,
+   "relation": "x**3 = y**3 - 3*a*y**2 + 3*a**2*y - a**3",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 504,
+   "relation": "1/(a-alpha) = b",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 504,
+   "relation": "a - alpha = 1/b",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 504,
+   "relation": "a = alpha + 1/b",
+   "category": "definition",
+   "note": "a defined"
+  },
+  {
+   "leaf": 504,
+   "relation": "a = alpha + 1/b",
+   "category": "definition",
+   "note": "a defined"
+  },
+  {
+   "leaf": 513,
+   "relation": "D/C = delta + B/C",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 549,
+   "relation": "r**0 = A*(p**0 - a*q**0) * (p**0 - b*q**0)",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 596,
+   "relation": "A = n**2 - C*B",
+   "category": "definition",
+   "note": "A defined"
+  },
+  {
+   "leaf": 596,
+   "relation": "v**2 - A*xi**2 = M",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 596,
+   "relation": "cy**2 - 2*n*y*z + B*z**2 = 1",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 596,
+   "relation": "c*p**2 - 2*n*p*q + B*q**2 = 1",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 596,
+   "relation": "p*s - q*r = 1",
+   "category": "anomaly",
+   "note": "unverified as a universal identity (may be context-dependent)"
+  },
+  {
+   "leaf": 596,
+   "relation": "y = p*t + r*u",
+   "category": "definition",
+   "note": "y defined"
+  },
+  {
+   "leaf": 596,
+   "relation": "z = q*t + s*u",
+   "category": "definition",
+   "note": "z defined"
+  },
+  {
+   "leaf": 613,
+   "relation": "33**2 - 13 = 1010",
+   "category": "anomaly",
+   "note": "lhs 1076 != rhs 1010"
+  },
+  {
+   "leaf": 613,
+   "relation": "33/10 = 3",
+   "category": "anomaly",
+   "note": "lhs 3.3 != rhs 3"
+  },
+  {
+   "leaf": 614,
+   "relation": "-33/10 = -3",
+   "category": "anomaly",
+   "note": "lhs -3.3 != rhs -3"
+  },
+  {
+   "leaf": 614,
+   "relation": "(9-97)/10 = -7",
+   "category": "anomaly",
+   "note": "lhs -8.8 != rhs -7"
+  }
+ ]
+}
