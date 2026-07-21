@@ -1,17 +1,17 @@
 {
  "source": "Euler, Elements of Algebra, English ed. 1828 (Internet Archive elementsofalgebr00eule)",
  "leaves_transcribed": 627,
- "leaves_truncated_even_at_16k": 26,
- "expressions_checked": 20184,
- "equalities_flagged_by_symbolic_check": 455,
+ "leaves_truncated": 0,
+ "expressions_checked": 20431,
+ "equalities_flagged_by_symbolic_check": 492,
  "triage_counts": {
   "18c-convention": 10,
-  "anomaly": 50,
+  "anomaly": 52,
   "numerically-verified": 9,
-  "approximation": 70,
-  "context-equation": 199,
-  "series-expansion": 7,
-  "definition": 110
+  "approximation": 80,
+  "context-equation": 210,
+  "series-expansion": 9,
+  "definition": 122
  },
  "how_to_read_this": "The symbolic checker flags every equality it cannot prove is a universal identity. In a teaching text most of those are not errors: 'context-equation' are equations being solved or definitions (they hold under local hypotheses the checker cannot see); 'approximation' are decimals verified against the printed digits; 'definition'/'18c-convention'/'series-expansion'/'numerically-verified' are likewise fine. Only 'anomaly' is a genuine pure-numeric mismatch worth a human's eyes.",
  "headline_finding": {
@@ -27,7 +27,7 @@
   ]
  },
  "other_pure_numeric_anomalies": {
-  "count": 45,
+  "count": 47,
   "note": "These are pure-numeric mismatches with no free variables. They are candidates for human review, NOT confirmed Euler errors: the majority are single-digit machine-transcription slips the checker catches (e.g. '33**2 - 13 = 1010', where 33**2-13 = 1076), and a few are checker parse-limits (multi-argument lcm). This is the checker doing QA on its own reading.",
   "items": [
    {
@@ -209,6 +209,16 @@
     "leaf": 480,
     "relation": "(1 - 2*(5/4)**2) / (2*(5/4)) = 17/20",
     "note": "lhs -0.85 != rhs 0.85"
+   },
+   {
+    "leaf": 483,
+    "relation": "((-8/5)**2 - 1)/(2*(-8/5)) = 39/80",
+    "note": "lhs -0.4875 != rhs 0.4875"
+   },
+   {
+    "leaf": 483,
+    "relation": "((-11/2)**2 - 1)/(2*(-11/2)) = 117/44",
+    "note": "lhs -2.65909 != rhs 2.65909"
    },
    {
     "leaf": 496,
@@ -2987,6 +2997,228 @@
    "relation": "-35/12 = -3",
    "category": "anomaly",
    "note": "lhs -2.91667 != rhs -3"
+  },
+  {
+   "leaf": 330,
+   "relation": "441/169 = 21/13 + 1",
+   "category": "approximation",
+   "note": "approximately equal (2.60947 vs 2.61538)"
+  },
+  {
+   "leaf": 307,
+   "relation": "5.05**3 + 24*5.05 = 250",
+   "category": "approximation",
+   "note": "approximately equal (249.988 vs 250)"
+  },
+  {
+   "leaf": 209,
+   "relation": "0.6666666 = 2/3",
+   "category": "approximation",
+   "note": "exact 0.666666667 vs printed 0.6666666"
+  },
+  {
+   "leaf": 209,
+   "relation": "1/6 = 0.1666666",
+   "category": "approximation",
+   "note": "exact 0.166666667 vs printed 0.1666666"
+  },
+  {
+   "leaf": 209,
+   "relation": "0.1666666 = 0.666666 - 0.5",
+   "category": "approximation",
+   "note": "exact 0.166666000 vs printed 0.1666666"
+  },
+  {
+   "leaf": 209,
+   "relation": "0.666666 = 2/3",
+   "category": "approximation",
+   "note": "exact 0.66666667 vs printed 0.666666"
+  },
+  {
+   "leaf": 209,
+   "relation": "0.1666666 = 2/3 - 1/2",
+   "category": "approximation",
+   "note": "exact 0.166666667 vs printed 0.1666666"
+  },
+  {
+   "leaf": 209,
+   "relation": "2/6 = 0.333333",
+   "category": "approximation",
+   "note": "exact 0.33333333 vs printed 0.333333"
+  },
+  {
+   "leaf": 209,
+   "relation": "5/6 = 0.833333",
+   "category": "approximation",
+   "note": "exact 0.83333333 vs printed 0.833333"
+  },
+  {
+   "leaf": 209,
+   "relation": "1/7 = 0.142857",
+   "category": "approximation",
+   "note": "exact 0.14285714 vs printed 0.142857"
+  },
+  {
+   "leaf": 411,
+   "relation": "p = 2*e*h**3/k",
+   "category": "definition",
+   "note": "p defined"
+  },
+  {
+   "leaf": 411,
+   "relation": "q = e*h*(k**2+2*a)/k**3",
+   "category": "definition",
+   "note": "q defined"
+  },
+  {
+   "leaf": 411,
+   "relation": "y = 4*h*k**2*(2*a-k**2)/(3*k**4-4*a**2)",
+   "category": "definition",
+   "note": "y defined"
+  },
+  {
+   "leaf": 411,
+   "relation": "eh**4 = k**2-a",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 411,
+   "relation": "a+e*h**4 = k**2",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 411,
+   "relation": "(a*(1-y)**4 + e*h**4*(1+y)**4)/((1-y)**4) = (k**2 + 4*(k**2-2*a)*y + 6*k**2*y**2 + 4*(k**2-2*a)*y**3 + k**2*y**4)/((1-y)**4)",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 411,
+   "relation": "4*k**2 - 8*a = 2*k*p",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 411,
+   "relation": "p = (2*k**2 - 4*a)/k",
+   "category": "definition",
+   "note": "p defined"
+  },
+  {
+   "leaf": 411,
+   "relation": "8*e*h**4*k*(2*a-k**2)/(3*k**4-4*a**2) = 8*k*(k**2-a)*(2*a-k**2)/(3*k**4-4*a**2)",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 411,
+   "relation": "16*e*h**3*k*(k**2+2*a)*(2*a-k**2)**2/((3*k**4-4*a**2)**2) = 16*k*(k**2-a)*(k**2+2*a)*(2*a-k**2)**2/((3*k**4-4*a**2)**2)",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 472,
+   "relation": "9*(6*m+5)**2 - 4*a*(6*m+5)**2 - 9*a*(4*m+4)**2 + 4*a**2*(4*m+4)**2 + a = 9*(6*m+5)**2 + 4*a**2*(4*m+4)**2 - a*(288*m**2 + 528*m + 244)",
+   "category": "series-expansion",
+   "note": "holds as a truncated series (matches at a small argument)"
+  },
+  {
+   "leaf": 554,
+   "relation": "A = 1",
+   "category": "definition",
+   "note": "A defined"
+  },
+  {
+   "leaf": 554,
+   "relation": "B = 0",
+   "category": "definition",
+   "note": "B defined"
+  },
+  {
+   "leaf": 554,
+   "relation": "E = 4*kappa",
+   "category": "definition",
+   "note": "E defined"
+  },
+  {
+   "leaf": 554,
+   "relation": "sqrt(E)/2 = sqrt(kappa)",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 554,
+   "relation": "p0 = 1",
+   "category": "definition",
+   "note": "p0 defined"
+  },
+  {
+   "leaf": 554,
+   "relation": "q0 = 0",
+   "category": "definition",
+   "note": "q0 defined"
+  },
+  {
+   "leaf": 554,
+   "relation": "pxi = 1",
+   "category": "definition",
+   "note": "pxi defined"
+  },
+  {
+   "leaf": 483,
+   "relation": "((-8/5)**2 - 1)/(2*(-8/5)) = 39/80",
+   "category": "anomaly",
+   "note": "lhs -0.4875 != rhs 0.4875"
+  },
+  {
+   "leaf": 483,
+   "relation": "((-11/2)**2 - 1)/(2*(-11/2)) = 117/44",
+   "category": "anomaly",
+   "note": "lhs -2.65909 != rhs 2.65909"
+  },
+  {
+   "leaf": 591,
+   "relation": "A = a**2",
+   "category": "definition",
+   "note": "A defined"
+  },
+  {
+   "leaf": 591,
+   "relation": "c*y**2 - 2*n*y*z + b*z**2 = ((c*y - n*z)**2 - A*z**2)/c",
+   "category": "series-expansion",
+   "note": "holds as a truncated series (matches at a small argument)"
+  },
+  {
+   "leaf": 591,
+   "relation": "n**2 - a**2 = A*c",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 591,
+   "relation": "(n+a)*(n-a) = A*c",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 591,
+   "relation": "c = b*c",
+   "category": "definition",
+   "note": "c defined"
+  },
+  {
+   "leaf": 591,
+   "relation": "n + a = f*b",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
+  },
+  {
+   "leaf": 591,
+   "relation": "n - a = g*c",
+   "category": "context-equation",
+   "note": "has free variables; an equation/definition, not a universal identity"
   }
  ]
 }
