@@ -36,7 +36,7 @@ expand coverage (cheap, CPU).
 ## Training approach, cheapest-first
 - **Phase 1 (now, free):** grow verified printed pairs (Tier-1 runs) + stage CROHME/HME100K/
   MathWriting/im2latex + prototype the manuscript-print bootstrap on ONE case to prove pair quality.
-- **Phase 2 (when ready, cheap):** Gemini supervised fine-tuning on the assembled pairs, if the GfS
+- **Phase 2 (when ready, cheap):** Gemini supervised fine-tuning on the assembled pairs, if the Vertex
   credit covers Vertex tuning jobs (verify terms). On-platform, no GPU procurement.
 - **Phase 3 (only if Phase 2 underperforms):** fine-tune a dedicated HMER model (TAMER / ICAL /
   Uni-MuMER base) on GPUs. This needs a real GPU budget the Gemini credits will not cover.
@@ -51,4 +51,4 @@ cold-start project. Meanwhile the printed work ships real value today and the co
 2. Pull + stage CROHME, HME100K, MathWriting, im2latex-100k into a `mathtrain/` corpus.
 3. Prototype the manuscript-print bootstrap on one Euler manuscript with a known printed edition;
    measure how many good handwritten pairs it yields per page.
-4. Verify whether the GfS credit covers Vertex Gemini tuning (decides Phase 2 cost).
+4. Verify whether the Vertex credit covers Vertex Gemini tuning (decides Phase 2 cost).
